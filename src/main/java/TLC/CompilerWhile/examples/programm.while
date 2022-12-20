@@ -1,0 +1,25 @@
+function add :
+read Op1, Op2
+%
+
+A := Test;
+
+ Result := Op1 ;
+
+foreach X in Op2 do
+ Test := ( cons nil X )
+od;
+
+A := (other)
+
+%
+write Result
+
+function other :
+read Op1, Op2
+%
+
+A := Test
+
+%
+write Result
