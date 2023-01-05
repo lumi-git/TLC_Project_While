@@ -1,3 +1,5 @@
+package TLC.CompilerWhile.ThreeAC;
+
 public class ifnz implements instruction {
     private final String m_a;
     private final label m_label;

@@ -1,3 +1,5 @@
+package TLC.CompilerWhile.ThreeAC;
+
 public class param implements instruction {
     private final String m_a;
 

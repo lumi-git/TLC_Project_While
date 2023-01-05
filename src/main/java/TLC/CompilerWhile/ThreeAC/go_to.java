@@ -1,3 +1,5 @@
+package TLC.CompilerWhile.ThreeAC;
+
 public class go_to implements instruction {
     private final String m_label;
 

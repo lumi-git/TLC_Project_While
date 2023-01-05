@@ -1,3 +1,4 @@
+package TLC.CompilerWhile.ThreeAC;
 
 public class assignation implements instruction {
     private String m_a;
