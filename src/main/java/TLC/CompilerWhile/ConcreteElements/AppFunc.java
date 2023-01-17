@@ -16,9 +16,7 @@ public class AppFunc extends TreeNode {
 
     super(astNode);
     name = astNode.getChild(0).getText();
-
-    ArgCount = astNode.getChild(1).getChildCount();
-
+    ArgCount = astNode.getChildren().size()-1;
 
   }
 
