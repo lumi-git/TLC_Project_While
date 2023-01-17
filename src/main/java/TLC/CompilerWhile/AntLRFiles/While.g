@@ -71,7 +71,7 @@ exprBase:	'nil' |
 		'(' 'list' t2=lexpr ')'-> LIST $t2|
 		'(' 'hd' t3=exprBase ')'-> HD $t3|
 		'(' 'tl' t4=exprBase ')'-> TL $t4|
-		'(' t5=Symbol t6=lexpr ')'->^(APPFUNC $t5 $t6?);
+		'(' t5=Symbol variable* ')'->^(APPFUNC $t5 variable+);
 		
 expression
 	:	t1=exprBase('=?' t2=exprBase)? -> $t1 $t2?;

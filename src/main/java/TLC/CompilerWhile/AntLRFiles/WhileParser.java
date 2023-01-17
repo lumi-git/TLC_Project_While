@@ -1,6 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g 2022-12-16 17:23:52
-
-package TLC.CompilerWhile.AntLRFiles;
+// $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g 2023-01-17 14:43:36
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -294,7 +292,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: t1, t2
+            // elements: t2, t1
             // token labels: t1
             // rule labels: t2, retval
             // token list labels: 
@@ -413,7 +411,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: t1, t2, t3
+            // elements: t3, t1, t2
             // token labels: 
             // rule labels: t1, t2, retval, t3
             // token list labels: 
@@ -628,7 +626,7 @@ public class WhileParser extends Parser {
 
 
             // AST REWRITE
-            // elements: t2, t1
+            // elements: t1, t2
             // token labels: 
             // rule labels: t1, t2, retval
             // token list labels: 
@@ -1230,7 +1228,7 @@ public class WhileParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: t5, t3, t4
+                    // elements: t3, t4, t5
                     // token labels: 
                     // rule labels: t4, t5, retval, t3
                     // token list labels: 
@@ -1387,7 +1385,7 @@ public class WhileParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: t9, t8
+                    // elements: t8, t9
                     // token labels: 
                     // rule labels: t8, t9, retval
                     // token list labels: 
@@ -1459,7 +1457,7 @@ public class WhileParser extends Parser {
 
 
                     // AST REWRITE
-                    // elements: t11, t12, t10
+                    // elements: t10, t12, t11
                     // token labels: 
                     // rule labels: t10, t12, t11, retval
                     // token list labels: 
@@ -1705,7 +1703,7 @@ public class WhileParser extends Parser {
     };
 
     // $ANTLR start "exprBase"
-    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:67:1: exprBase : ( 'nil' | variable | Symbol | '(' 'cons' t1= lexpr ')' -> CONS $t1 | '(' 'list' t2= lexpr ')' -> LIST $t2 | '(' 'hd' t3= exprBase ')' -> HD $t3 | '(' 'tl' t4= exprBase ')' -> TL $t4 | '(' t5= Symbol t6= lexpr ')' -> ^( APPFUNC $t5 ( $t6)? ) );
+    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:67:1: exprBase : ( 'nil' | variable | Symbol | '(' 'cons' t1= lexpr ')' -> CONS $t1 | '(' 'list' t2= lexpr ')' -> LIST $t2 | '(' 'hd' t3= exprBase ')' -> HD $t3 | '(' 'tl' t4= exprBase ')' -> TL $t4 | '(' t5= Symbol ( variable )* ')' -> ^( APPFUNC $t5 ( variable )+ ) );
     public final WhileParser.exprBase_return exprBase() throws RecognitionException {
         WhileParser.exprBase_return retval = new WhileParser.exprBase_return();
         retval.start = input.LT(1);
@@ -1728,7 +1726,7 @@ public class WhileParser extends Parser {
         Token string_literal45=null;
         Token char_literal46=null;
         Token char_literal47=null;
-        Token char_literal48=null;
+        Token char_literal49=null;
         WhileParser.lexpr_return t1 = null;
 
         WhileParser.lexpr_return t2 = null;
@@ -1737,9 +1735,9 @@ public class WhileParser extends Parser {
 
         WhileParser.exprBase_return t4 = null;
 
-        WhileParser.lexpr_return t6 = null;
-
         WhileParser.variable_return variable33 = null;
+
+        WhileParser.variable_return variable48 = null;
 
 
         Object t5_tree=null;
@@ -1758,7 +1756,7 @@ public class WhileParser extends Parser {
         Object string_literal45_tree=null;
         Object char_literal46_tree=null;
         Object char_literal47_tree=null;
-        Object char_literal48_tree=null;
+        Object char_literal49_tree=null;
         RewriteRuleTokenStream stream_55=new RewriteRuleTokenStream(adaptor,"token 55");
         RewriteRuleTokenStream stream_56=new RewriteRuleTokenStream(adaptor,"token 56");
         RewriteRuleTokenStream stream_Symbol=new RewriteRuleTokenStream(adaptor,"token Symbol");
@@ -1768,11 +1766,12 @@ public class WhileParser extends Parser {
         RewriteRuleTokenStream stream_54=new RewriteRuleTokenStream(adaptor,"token 54");
         RewriteRuleSubtreeStream stream_lexpr=new RewriteRuleSubtreeStream(adaptor,"rule lexpr");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
+        RewriteRuleSubtreeStream stream_variable=new RewriteRuleSubtreeStream(adaptor,"rule variable");
         try {
-            // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:67:9: ( 'nil' | variable | Symbol | '(' 'cons' t1= lexpr ')' -> CONS $t1 | '(' 'list' t2= lexpr ')' -> LIST $t2 | '(' 'hd' t3= exprBase ')' -> HD $t3 | '(' 'tl' t4= exprBase ')' -> TL $t4 | '(' t5= Symbol t6= lexpr ')' -> ^( APPFUNC $t5 ( $t6)? ) )
-            int alt10=8;
-            alt10 = dfa10.predict(input);
-            switch (alt10) {
+            // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:67:9: ( 'nil' | variable | Symbol | '(' 'cons' t1= lexpr ')' -> CONS $t1 | '(' 'list' t2= lexpr ')' -> LIST $t2 | '(' 'hd' t3= exprBase ')' -> HD $t3 | '(' 'tl' t4= exprBase ')' -> TL $t4 | '(' t5= Symbol ( variable )* ')' -> ^( APPFUNC $t5 ( variable )+ ) )
+            int alt11=8;
+            alt11 = dfa11.predict(input);
+            switch (alt11) {
                 case 1 :
                     // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:67:11: 'nil'
                     {
@@ -1980,7 +1979,7 @@ public class WhileParser extends Parser {
                     }
                     break;
                 case 8 :
-                    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:3: '(' t5= Symbol t6= lexpr ')'
+                    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:3: '(' t5= Symbol ( variable )* ')'
                     {
                     char_literal47=(Token)match(input,51,FOLLOW_51_in_exprBase793);  
                     stream_51.add(char_literal47);
@@ -1988,44 +1987,69 @@ public class WhileParser extends Parser {
                     t5=(Token)match(input,Symbol,FOLLOW_Symbol_in_exprBase797);  
                     stream_Symbol.add(t5);
 
-                    pushFollow(FOLLOW_lexpr_in_exprBase801);
-                    t6=lexpr();
+                    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:17: ( variable )*
+                    loop10:
+                    do {
+                        int alt10=2;
+                        int LA10_0 = input.LA(1);
 
-                    state._fsp--;
+                        if ( (LA10_0==Variable) ) {
+                            alt10=1;
+                        }
 
-                    stream_lexpr.add(t6.getTree());
-                    char_literal48=(Token)match(input,53,FOLLOW_53_in_exprBase803);  
-                    stream_53.add(char_literal48);
+
+                        switch (alt10) {
+                    	case 1 :
+                    	    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:17: variable
+                    	    {
+                    	    pushFollow(FOLLOW_variable_in_exprBase799);
+                    	    variable48=variable();
+
+                    	    state._fsp--;
+
+                    	    stream_variable.add(variable48.getTree());
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop10;
+                        }
+                    } while (true);
+
+                    char_literal49=(Token)match(input,53,FOLLOW_53_in_exprBase802);  
+                    stream_53.add(char_literal49);
 
 
 
                     // AST REWRITE
-                    // elements: t6, t5
+                    // elements: variable, t5
                     // token labels: t5
-                    // rule labels: t6, retval
+                    // rule labels: retval
                     // token list labels: 
                     // rule list labels: 
                     // wildcard labels: 
                     retval.tree = root_0;
                     RewriteRuleTokenStream stream_t5=new RewriteRuleTokenStream(adaptor,"token t5",t5);
-                    RewriteRuleSubtreeStream stream_t6=new RewriteRuleSubtreeStream(adaptor,"rule t6",t6!=null?t6.tree:null);
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 74:29: -> ^( APPFUNC $t5 ( $t6)? )
+                    // 74:30: -> ^( APPFUNC $t5 ( variable )+ )
                     {
-                        // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:31: ^( APPFUNC $t5 ( $t6)? )
+                        // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:32: ^( APPFUNC $t5 ( variable )+ )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(APPFUNC, "APPFUNC"), root_1);
 
                         adaptor.addChild(root_1, stream_t5.nextNode());
-                        // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:74:45: ( $t6)?
-                        if ( stream_t6.hasNext() ) {
-                            adaptor.addChild(root_1, stream_t6.nextTree());
+                        if ( !(stream_variable.hasNext()) ) {
+                            throw new RewriteEarlyExitException();
+                        }
+                        while ( stream_variable.hasNext() ) {
+                            adaptor.addChild(root_1, stream_variable.nextTree());
 
                         }
-                        stream_t6.reset();
+                        stream_variable.reset();
 
                         adaptor.addChild(root_0, root_1);
                         }
@@ -2068,40 +2092,40 @@ public class WhileParser extends Parser {
 
         Object root_0 = null;
 
-        Token string_literal49=null;
+        Token string_literal50=null;
         WhileParser.exprBase_return t1 = null;
 
         WhileParser.exprBase_return t2 = null;
 
 
-        Object string_literal49_tree=null;
+        Object string_literal50_tree=null;
         RewriteRuleTokenStream stream_57=new RewriteRuleTokenStream(adaptor,"token 57");
         RewriteRuleSubtreeStream stream_exprBase=new RewriteRuleSubtreeStream(adaptor,"rule exprBase");
         try {
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:77:2: (t1= exprBase ( '=?' t2= exprBase )? -> $t1 ( $t2)? )
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:77:4: t1= exprBase ( '=?' t2= exprBase )?
             {
-            pushFollow(FOLLOW_exprBase_in_expression827);
+            pushFollow(FOLLOW_exprBase_in_expression825);
             t1=exprBase();
 
             state._fsp--;
 
             stream_exprBase.add(t1.getTree());
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:77:15: ( '=?' t2= exprBase )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA11_0==57) ) {
-                alt11=1;
+            if ( (LA12_0==57) ) {
+                alt12=1;
             }
-            switch (alt11) {
+            switch (alt12) {
                 case 1 :
                     // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:77:16: '=?' t2= exprBase
                     {
-                    string_literal49=(Token)match(input,57,FOLLOW_57_in_expression829);  
-                    stream_57.add(string_literal49);
+                    string_literal50=(Token)match(input,57,FOLLOW_57_in_expression827);  
+                    stream_57.add(string_literal50);
 
-                    pushFollow(FOLLOW_exprBase_in_expression833);
+                    pushFollow(FOLLOW_exprBase_in_expression831);
                     t2=exprBase();
 
                     state._fsp--;
@@ -2183,21 +2207,21 @@ public class WhileParser extends Parser {
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:79:9: (t1= exprBase )*
             {
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:79:11: (t1= exprBase )*
-            loop12:
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( ((LA12_0>=Symbol && LA12_0<=Variable)||(LA12_0>=50 && LA12_0<=51)) ) {
-                    alt12=1;
+                if ( ((LA13_0>=Symbol && LA13_0<=Variable)||(LA13_0>=50 && LA13_0<=51)) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
             	    // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:79:11: t1= exprBase
             	    {
-            	    pushFollow(FOLLOW_exprBase_in_lexpr855);
+            	    pushFollow(FOLLOW_exprBase_in_lexpr853);
             	    t1=exprBase();
 
             	    state._fsp--;
@@ -2208,7 +2232,7 @@ public class WhileParser extends Parser {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop13;
                 }
             } while (true);
 
@@ -2280,7 +2304,7 @@ public class WhileParser extends Parser {
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:80:9: (t1= Variable -> ^( VARS $t1) )
             // C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g:80:11: t1= Variable
             {
-            t1=(Token)match(input,Variable,FOLLOW_Variable_in_variable868);  
+            t1=(Token)match(input,Variable,FOLLOW_Variable_in_variable866);  
             stream_Variable.add(t1);
 
 
@@ -2335,20 +2359,20 @@ public class WhileParser extends Parser {
     // Delegated rules
 
 
-    protected DFA10 dfa10 = new DFA10(this);
-    static final String DFA10_eotS =
+    protected DFA11 dfa11 = new DFA11(this);
+    static final String DFA11_eotS =
         "\12\uffff";
-    static final String DFA10_eofS =
+    static final String DFA11_eofS =
         "\12\uffff";
-    static final String DFA10_minS =
+    static final String DFA11_minS =
         "\1\35\3\uffff\1\35\5\uffff";
-    static final String DFA10_maxS =
+    static final String DFA11_maxS =
         "\1\63\3\uffff\1\70\5\uffff";
-    static final String DFA10_acceptS =
+    static final String DFA11_acceptS =
         "\1\uffff\1\1\1\2\1\3\1\uffff\1\4\1\5\1\6\1\7\1\10";
-    static final String DFA10_specialS =
+    static final String DFA11_specialS =
         "\12\uffff}>";
-    static final String[] DFA10_transitionS = {
+    static final String[] DFA11_transitionS = {
             "\1\3\1\2\23\uffff\1\1\1\4",
             "",
             "",
@@ -2361,37 +2385,37 @@ public class WhileParser extends Parser {
             ""
     };
 
-    static final short[] DFA10_eot = DFA.unpackEncodedString(DFA10_eotS);
-    static final short[] DFA10_eof = DFA.unpackEncodedString(DFA10_eofS);
-    static final char[] DFA10_min = DFA.unpackEncodedStringToUnsignedChars(DFA10_minS);
-    static final char[] DFA10_max = DFA.unpackEncodedStringToUnsignedChars(DFA10_maxS);
-    static final short[] DFA10_accept = DFA.unpackEncodedString(DFA10_acceptS);
-    static final short[] DFA10_special = DFA.unpackEncodedString(DFA10_specialS);
-    static final short[][] DFA10_transition;
+    static final short[] DFA11_eot = DFA.unpackEncodedString(DFA11_eotS);
+    static final short[] DFA11_eof = DFA.unpackEncodedString(DFA11_eofS);
+    static final char[] DFA11_min = DFA.unpackEncodedStringToUnsignedChars(DFA11_minS);
+    static final char[] DFA11_max = DFA.unpackEncodedStringToUnsignedChars(DFA11_maxS);
+    static final short[] DFA11_accept = DFA.unpackEncodedString(DFA11_acceptS);
+    static final short[] DFA11_special = DFA.unpackEncodedString(DFA11_specialS);
+    static final short[][] DFA11_transition;
 
     static {
-        int numStates = DFA10_transitionS.length;
-        DFA10_transition = new short[numStates][];
+        int numStates = DFA11_transitionS.length;
+        DFA11_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA10_transition[i] = DFA.unpackEncodedString(DFA10_transitionS[i]);
+            DFA11_transition[i] = DFA.unpackEncodedString(DFA11_transitionS[i]);
         }
     }
 
-    class DFA10 extends DFA {
+    class DFA11 extends DFA {
 
-        public DFA10(BaseRecognizer recognizer) {
+        public DFA11(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 10;
-            this.eot = DFA10_eot;
-            this.eof = DFA10_eof;
-            this.min = DFA10_min;
-            this.max = DFA10_max;
-            this.accept = DFA10_accept;
-            this.special = DFA10_special;
-            this.transition = DFA10_transition;
+            this.decisionNumber = 11;
+            this.eot = DFA11_eot;
+            this.eof = DFA11_eof;
+            this.min = DFA11_min;
+            this.max = DFA11_max;
+            this.accept = DFA11_accept;
+            this.special = DFA11_special;
+            this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "67:1: exprBase : ( 'nil' | variable | Symbol | '(' 'cons' t1= lexpr ')' -> CONS $t1 | '(' 'list' t2= lexpr ')' -> LIST $t2 | '(' 'hd' t3= exprBase ')' -> HD $t3 | '(' 'tl' t4= exprBase ')' -> TL $t4 | '(' t5= Symbol t6= lexpr ')' -> ^( APPFUNC $t5 ( $t6)? ) );";
+            return "67:1: exprBase : ( 'nil' | variable | Symbol | '(' 'cons' t1= lexpr ')' -> CONS $t1 | '(' 'list' t2= lexpr ')' -> LIST $t2 | '(' 'hd' t3= exprBase ')' -> HD $t3 | '(' 'tl' t4= exprBase ')' -> TL $t4 | '(' t5= Symbol ( variable )* ')' -> ^( APPFUNC $t5 ( variable )+ ) );";
         }
     }
  
@@ -2475,13 +2499,13 @@ public class WhileParser extends Parser {
     public static final BitSet FOLLOW_exprBase_in_exprBase780 = new BitSet(new long[]{0x0020000000000000L});
     public static final BitSet FOLLOW_53_in_exprBase782 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_51_in_exprBase793 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_Symbol_in_exprBase797 = new BitSet(new long[]{0x002C000060000000L});
-    public static final BitSet FOLLOW_lexpr_in_exprBase801 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_53_in_exprBase803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_exprBase_in_expression827 = new BitSet(new long[]{0x0200000000000002L});
-    public static final BitSet FOLLOW_57_in_expression829 = new BitSet(new long[]{0x000C000060000000L});
-    public static final BitSet FOLLOW_exprBase_in_expression833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_exprBase_in_lexpr855 = new BitSet(new long[]{0x000C000060000002L});
-    public static final BitSet FOLLOW_Variable_in_variable868 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Symbol_in_exprBase797 = new BitSet(new long[]{0x0020000040000000L});
+    public static final BitSet FOLLOW_variable_in_exprBase799 = new BitSet(new long[]{0x0020000040000000L});
+    public static final BitSet FOLLOW_53_in_exprBase802 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_exprBase_in_expression825 = new BitSet(new long[]{0x0200000000000002L});
+    public static final BitSet FOLLOW_57_in_expression827 = new BitSet(new long[]{0x000C000060000000L});
+    public static final BitSet FOLLOW_exprBase_in_expression831 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_exprBase_in_lexpr853 = new BitSet(new long[]{0x000C000060000002L});
+    public static final BitSet FOLLOW_Variable_in_variable866 = new BitSet(new long[]{0x0000000000000002L});
 
 }
