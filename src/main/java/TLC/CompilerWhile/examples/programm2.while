@@ -1,0 +1,30 @@
+function other:
+read Arg1,Arg2
+%
+    if(not Op1)then
+        Result := nil
+    else
+        Result := nil
+    fi
+%
+write Result
+
+
+// Logical and
+function and:
+read Op1,Op2
+%
+    // not Op1
+    if(not Op1)then
+        Result := nil
+    else
+        Result := (other Op2 Op1)
+        // ici si ca bug, faut aller voir dans AppFunc, c'est que vous avez modifier l'AST et ca ne correspond plus au constructeur de AppFunc
+    fi
+%
+write Result
+
+
+
+
+

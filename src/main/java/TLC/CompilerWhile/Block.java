@@ -57,14 +57,14 @@ public class Block {
   }
 
   public SymbolElement findSymbolInParent(String name) {
-    if (m_parent != null) {
+
 
       if (findSymbol(name) != null) {
         return findSymbol(name);
-      } else {
+      } else if (m_parent != null) {
         return m_parent.findSymbolInParent(name);
       }
-    }
+
     return null;
   }
 

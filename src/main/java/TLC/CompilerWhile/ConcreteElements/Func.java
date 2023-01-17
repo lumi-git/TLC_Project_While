@@ -11,10 +11,26 @@ public class Func extends TreeNode {
   String type;
   ArrayList<String> args;
 
-  public Func(CommonTree astNode, String name) {
+
+
+  public Func(CommonTree astNode) {
+
+
+
     super(astNode);
-    this.args = new ArrayList<String>();
-    this.name = name;
+
+    this.args = new ArrayList<>();
+
+    CommonTree DefNode = (CommonTree) astNode.getChild(1);
+    CommonTree ArgsNode = (CommonTree) DefNode.getChild(0);
+
+    for (int i = 0; i < ArgsNode.getChildCount(); i++) {
+      this.args.add(ArgsNode.getChild(i).getText());
+    }
+
+
+    this.name = astNode.getChild(0).toString();
+
 
   }
 

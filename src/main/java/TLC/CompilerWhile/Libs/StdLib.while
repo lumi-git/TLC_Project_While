@@ -1,0 +1,22 @@
+function not:
+read Arg1
+%
+    if Arg1 then
+        Result := nil
+    else
+        Result := nil
+    fi
+%
+write Result
+
+
+function stdlibtestADD:
+read Arg1
+%
+    if Arg1 then
+        Result := nil
+    else
+        Result := nil
+    fi
+%
+write Result

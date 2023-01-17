@@ -16,14 +16,13 @@ public class Affectation extends TreeNode {
     line = astNode.getLine();
     column = astNode.getCharPositionInLine();
     right = new ArrayList<>();
+
     left = (CommonTree) astNode.getChild(0).getChild(0);
     for (int i = 1; i < astNode.getChildCount(); i++) {
       if (astNode.getChild(i).getType() == WhileParser.VARS) {
         right.add((CommonTree) astNode.getChild(i).getChild(0));
       }
-
     }
-
   }
 
   @Override

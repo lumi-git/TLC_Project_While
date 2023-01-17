@@ -6,14 +6,12 @@ import org.antlr.runtime.tree.CommonTree;
 
 public class ExpCond extends TreeNode {
 
-  private CommonTree left;
-  private CommonTree right;
+  private CommonTree cond;
 
   public ExpCond(CommonTree astNode) {
     super(astNode);
-    this.left = (CommonTree) astNode.getChild(0).getChild(0);
-    this.right = (CommonTree) astNode.getChild(1).getChild(0);
 
+    this.cond = (CommonTree) astNode.getChild(0);
 
   }
 
@@ -22,13 +20,10 @@ public class ExpCond extends TreeNode {
     v.visitExpCond(this);
   }
 
-  public CommonTree getLeft() {
-    return left;
+  public CommonTree getCond() {
+    return cond;
   }
 
-  public CommonTree getRight() {
-    return right;
-  }
 
 
 }

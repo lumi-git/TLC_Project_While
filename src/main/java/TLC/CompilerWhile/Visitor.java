@@ -1,25 +1,9 @@
 package TLC.CompilerWhile;
 
-import static TLC.CompilerWhile.App.print;
-
 import TLC.CompilerWhile.AntLRFiles.WhileParser;
-import TLC.CompilerWhile.ConcreteElements.Affectation;
-import TLC.CompilerWhile.ConcreteElements.AppFunc;
-import TLC.CompilerWhile.ConcreteElements.ArgDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ArgReturn;
-import TLC.CompilerWhile.ConcreteElements.CONSdeclaration;
-import TLC.CompilerWhile.ConcreteElements.ConditionIF;
-import TLC.CompilerWhile.ConcreteElements.ElseDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ExpCond;
-import TLC.CompilerWhile.ConcreteElements.ForDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ForeachDeclaration;
-import TLC.CompilerWhile.ConcreteElements.FunctionBody;
-import TLC.CompilerWhile.ConcreteElements.Func;
-import TLC.CompilerWhile.ConcreteElements.ProgrammDeclaration;
-import TLC.CompilerWhile.ConcreteElements.WhileDeclaration;
-import TLC.CompilerWhile.ConcreteElements.symbolDeclaration;
-import TLC.CompilerWhile.ConcreteElements.typeDeclaration;
-import TLC.CompilerWhile.ConcreteElements.varDeclaration;
+import TLC.CompilerWhile.ConcreteElements.*;
+import TLC.CompilerWhile.ConcreteElements.IfDeclaration;
+
 import java.util.ArrayList;
 import org.antlr.runtime.tree.CommonTree;
 
@@ -89,7 +73,7 @@ public class Visitor {
 
       case WhileParser.FONCTION -> {
 
-        Func f = new Func((CommonTree) ct, ((CommonTree) ct.getChild(0)).toString());
+        Func f = new Func((CommonTree) ct);
         f.accept(this);
 
       }
@@ -117,7 +101,7 @@ public class Visitor {
       }
 
       case WhileParser.IF -> {
-        ConditionIF condIF = new ConditionIF((CommonTree) ct);
+        IfDeclaration condIF = new IfDeclaration((CommonTree) ct);
         condIF.accept(this);
       }
 
@@ -197,7 +181,7 @@ public class Visitor {
 
   }
 
-  public void visitConditionIF(ConditionIF condIF) {
+  public void visitConditionIF(IfDeclaration condIF) {
 
   }
 

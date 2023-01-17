@@ -5,12 +5,14 @@ import TLC.CompilerWhile.AntLRFiles.WhileParser;
 import TLC.CompilerWhile.Errors.ErrorG;
 import TLC.CompilerWhile.Errors.ErrorSender;
 
-import java.util.concurrent.Callable;
+import TLC.CompilerWhile.Errors.WhileError;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.CommonTree;
+
+import java.io.File;
 
 public class App {
 
@@ -19,9 +21,22 @@ public class App {
     try {
 
       String WorkspacePath = "src/main/java/TLC/CompilerWhile/examples/";
-      String fileName = "programm.while";
+      String fileName = "programm2.while";
 
-      String text = readFileAsString(WorkspacePath + fileName);
+      String LibPath = "src/main/java/TLC/CompilerWhile/Libs/";
+
+      String StdLib = "StdLib.while";
+
+      String text = "";
+
+      text = readFileAsString(LibPath + StdLib);
+
+      int libOffset = text.lines().toList().size();
+
+      WhileError.OFFSET = libOffset;
+
+
+      text += readFileAsString(WorkspacePath + fileName);
 
       CharStream stream = new ANTLRStringStream(text);
 
@@ -31,25 +46,36 @@ public class App {
 
       WhileParser parser = new WhileParser(tk);
 
+
+
+
       try {
 
         CommonTree ct = (CommonTree) parser.start().getTree();
 
-        //declaration of the visitors
-        SymbolTableCreatorVisitor visitorSymbolTable = new SymbolTableCreatorVisitor(ct);
+        System.out.println(ct.toStringTree());
 
-        TestSymbolTableVisitor testSymbolTable = new TestSymbolTableVisitor(ct);
+
+        SymbolTableVisitor symbolTableVisitor = new SymbolTableVisitor(ct);
 
         PrinterVisitor printerVisitor = new PrinterVisitor(ct);
 
+        ThreeAdressesVisitor threeAdressesVisitor = new ThreeAdressesVisitor(ct);
 
-        //uses of the visitors
-        //visitorSymbolTable.parse();
-        testSymbolTable.parse();
+
+
+
+        symbolTableVisitor.parse();
+
+        printerVisitor.parse();
 
         Stack.getInstance().PrintStackAsMD();
 
-        printerVisitor.parse();
+        threeAdressesVisitor.parse();
+
+
+
+
 
         //Tranform the tree into 3 address code using
 

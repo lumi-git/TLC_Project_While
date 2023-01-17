@@ -1,12 +1,11 @@
 package TLC.CompilerWhile;
 
-import static TLC.CompilerWhile.App.print;
-
 import TLC.CompilerWhile.ConcreteElements.Affectation;
+import TLC.CompilerWhile.ConcreteElements.AppFunc;
 import TLC.CompilerWhile.ConcreteElements.ArgDeclaration;
 import TLC.CompilerWhile.ConcreteElements.ArgReturn;
 import TLC.CompilerWhile.ConcreteElements.CONSdeclaration;
-import TLC.CompilerWhile.ConcreteElements.ConditionIF;
+import TLC.CompilerWhile.ConcreteElements.IfDeclaration;
 import TLC.CompilerWhile.ConcreteElements.ElseDeclaration;
 import TLC.CompilerWhile.ConcreteElements.ExpCond;
 import TLC.CompilerWhile.ConcreteElements.ForDeclaration;
@@ -20,13 +19,13 @@ import TLC.CompilerWhile.ConcreteElements.typeDeclaration;
 import TLC.CompilerWhile.ConcreteElements.varDeclaration;
 import TLC.CompilerWhile.Errors.ErrorSender;
 import TLC.CompilerWhile.Errors.FunctionDeclarationDuplicateError;
-import TLC.CompilerWhile.Errors.MissingDeclarationError;
-import java.util.ArrayList;
+import TLC.CompilerWhile.Errors.InsufisantArgCountError;
+import TLC.CompilerWhile.Errors.UnexistingSymbolError;
 import org.antlr.runtime.tree.CommonTree;
 
-public class SymbolTableCreatorVisitor extends Visitor {
+public class SymbolTableVisitor extends Visitor {
 
-  SymbolTableCreatorVisitor(CommonTree tree) {
+  SymbolTableVisitor(CommonTree tree) {
     super(tree);
   }
 
@@ -45,7 +44,8 @@ public class SymbolTableCreatorVisitor extends Visitor {
     }
 
     Stack.getInstance()
-        .addSymbol(new SymbolElement(f.getName(), "func", "tree", f.getLine(), f.getColumn()));
+        .addSymbol(new SymbolElement(f.getName(), "func", "tree", f.getLine(), f.getColumn(),
+            f.getArgs().size()));
 
     Stack.getInstance().addBlock("FUNC", f.getName());
     visitTree(f);
@@ -56,11 +56,13 @@ public class SymbolTableCreatorVisitor extends Visitor {
     for (CommonTree t : aff.getRight()) {
       if (Stack.getInstance().findSymbolInCurrentPath(t.toString()) == null) {
         //Not initialized
+
+
       }
     }
-
-    Stack.getInstance().addSymbol(
-        new SymbolElement(aff.getLeft().toString(), "var", "tree", aff.getLine(), aff.getColumn()));
+    Stack.getInstance().addTracedSymbol(
+        new SymbolElement(aff.getLeft().toString(), "var", "tree", aff.getLine(),
+            aff.getColumn(),0));
 
     visitTree(aff);
   }
@@ -71,8 +73,12 @@ public class SymbolTableCreatorVisitor extends Visitor {
 
   public void visitArgDeclaration(ArgDeclaration argD) {
     for (CommonTree t : argD.getArgs()) {
-      Stack.getInstance().addSymbol(
-          new SymbolElement(t.getText(), "var", "tree", argD.getLine(), argD.getColumn()));
+
+      //if the var is not allready declared in the path, we declare it in this block
+
+        Stack.getInstance().addTracedSymbol(
+            new SymbolElement(t.getText(), "var", "tree", argD.getLine(), argD.getColumn(),0));
+
     }
     visitTree(argD);
   }
@@ -82,7 +88,7 @@ public class SymbolTableCreatorVisitor extends Visitor {
     for (CommonTree t : argR.getArgs()) {
       if (Stack.getInstance().findSymbolInCurrentPath(t.toString()) == null) {
         //Not initialized
-        }
+      }
     }
 
     visitTree(argR);
@@ -90,9 +96,15 @@ public class SymbolTableCreatorVisitor extends Visitor {
   }
 
   public void visitForDeclaration(ForDeclaration forD) {
-    Stack.getInstance().addBlock("FOR", "ForLoop");
+    //Stack.getInstance().addBlock("FOR", "ForLoop");
     visitTree(forD);
-    Stack.getInstance().back();
+    //Stack.getInstance().back();
+  }
+
+  public void visitWhileDeclaration(WhileDeclaration whileD) {
+    //Stack.getInstance().addBlock("WHILE", "WhileLoop");
+    visitTree(whileD);
+    //Stack.getInstance().back();
   }
 
   public void visitForeachDeclaration(ForeachDeclaration foreachD) {
@@ -101,30 +113,43 @@ public class SymbolTableCreatorVisitor extends Visitor {
 
     Stack.getInstance().addSymbol(
         new SymbolElement(foreachD.getVar().toString(), "var", "tree", foreachD.getLine(),
-            foreachD.getColumn()));
+            foreachD.getColumn(),0));
+    Stack.getInstance().back();
 
     visitTree(foreachD);
 
-    Stack.getInstance().back();
+
+  }
+
+  public void visitAppFunc(AppFunc appF) {
+
+
+
+
+    if (Stack.getInstance().findSymbolInCurrentPath(appF.getName()) == null ){
+      ErrorSender.sendError(new UnexistingSymbolError(appF.getName(), appF.getLine(), appF.getColumn()), false);
+
+
+
+    }
+    else if(! Stack.getInstance().VerifyArgsCount(appF.getName(), appF.getArgCount())){
+      ErrorSender.sendError(new InsufisantArgCountError(appF.getName(), appF.getLine(), appF.getColumn()), false);
+    }
+
+
+
+
+
+    visitTree(appF);
 
 
   }
 
-  public void visitWhileDeclaration(WhileDeclaration whileD) {
-    Stack.getInstance().addBlock("WHILE", "WhileLoop");
-    visitTree(whileD);
-
-    Stack.getInstance().back();
-  }
 
 
   public void visitExpCond(ExpCond expC) {
 
-    if (Stack.getInstance().findSymbolInCurrentPath(expC.getLeft().toString()) == null) {
-      //Not initialized
-    }
-
-    if (Stack.getInstance().findSymbolInCurrentPath(expC.getRight().toString()) == null) {
+    if (Stack.getInstance().findSymbolInCurrentPath(expC.getCond().toString()) == null) {
       //Not initialized
     }
 
@@ -139,10 +164,10 @@ public class SymbolTableCreatorVisitor extends Visitor {
 
   }
 
-  public void visitConditionIF(ConditionIF condIF) {
-    Stack.getInstance().addBlock("IF", "if");
+  public void visitConditionIF(IfDeclaration condIF) {
+    //Stack.getInstance().addBlock("IF", "if");
     visitTree(condIF);
-    Stack.getInstance().back();
+    //Stack.getInstance().back();
 
   }
 
@@ -159,11 +184,10 @@ public class SymbolTableCreatorVisitor extends Visitor {
   }
 
   public void visitElseDeclaration(ElseDeclaration elseD) {
-    Stack.getInstance().addBlock("ELSE", "else");
+    //Stack.getInstance().addBlock("ELSE", "else");
     visitTree(elseD);
-    Stack.getInstance().back();
+    //Stack.getInstance().back();
   }
 
 
 }
-

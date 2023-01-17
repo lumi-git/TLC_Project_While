@@ -9,16 +9,23 @@ public class SymbolElement {
   int line;
   int column;
 
-  public SymbolElement(String name, String kind, String type, int line, int column) {
+  int paramCount;
+
+  public SymbolElement(String name, String kind, String type, int line, int column,int paramCount) {
     this.name = name;
     this.kind = kind;
     this.type = type;
     this.line = line;
     this.column = column;
+    this.paramCount =paramCount ;
 
     this.UniqueID = Stack.getInstance().getUniqueID()+"";
 
 
+  }
+
+  public int getParamCount() {
+    return paramCount;
   }
 
   public int getLine() {
@@ -55,7 +62,7 @@ public class SymbolElement {
   }
 
   public String ToMD() {
-    return "->   " + name + " , " + type + " , " + kind + " , UniqueID: "+getUniqueID()+"\n";
+    return "->   " + name + " , " + type + " , " + kind + " , " + paramCount + " , UniqueID: "+getUniqueID()+"\n";
 
   }
 

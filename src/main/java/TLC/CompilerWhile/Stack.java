@@ -16,9 +16,11 @@ public class Stack {
   }
 
   public static Stack getInstance() {
+
     if (m_instance == null) {
       m_instance = new Stack();
     }
+
     return m_instance;
   }
 
@@ -27,10 +29,17 @@ public class Stack {
 
   private Block currentBlock;
 
-
   private Stack(){
 
     this.stack = new ArrayList<Block>();
+
+  }
+
+
+  public boolean VerifyArgsCount(String name, int argsCount) {
+
+    return findSymbolInCurrentPath(name).getParamCount() == argsCount;
+
 
   }
 
@@ -126,9 +135,6 @@ public class Stack {
       e.printStackTrace();
     }
   }
-
-
-
 
   public SymbolElement findSymbol(String name){
     for (Block block : stack) {

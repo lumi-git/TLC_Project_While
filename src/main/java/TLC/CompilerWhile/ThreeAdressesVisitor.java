@@ -1,19 +1,7 @@
 package TLC.CompilerWhile;
 
-import TLC.CompilerWhile.ConcreteElements.Affectation;
-import TLC.CompilerWhile.ConcreteElements.ArgDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ArgReturn;
-import TLC.CompilerWhile.ConcreteElements.ConditionIF;
-import TLC.CompilerWhile.ConcreteElements.ExpCond;
-import TLC.CompilerWhile.ConcreteElements.ForDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ForeachDeclaration;
-import TLC.CompilerWhile.ConcreteElements.Func;
-import TLC.CompilerWhile.ConcreteElements.FunctionBody;
-import TLC.CompilerWhile.ConcreteElements.ProgrammDeclaration;
-import TLC.CompilerWhile.ConcreteElements.WhileDeclaration;
-import TLC.CompilerWhile.ConcreteElements.symbolDeclaration;
-import TLC.CompilerWhile.ConcreteElements.typeDeclaration;
-import java.util.ArrayList;
+import TLC.CompilerWhile.ConcreteElements.*;
+import TLC.CompilerWhile.ConcreteElements.IfDeclaration;
 import org.antlr.runtime.tree.CommonTree;
 
 public class ThreeAdressesVisitor extends Visitor{
@@ -21,24 +9,25 @@ public class ThreeAdressesVisitor extends Visitor{
   public ThreeAdressesVisitor(CommonTree tree) {
     super(tree);
   }
-
   public void VisitTypeDeclaration(typeDeclaration t) {
 
     visitTree(t);
-
-    print("Type Declaration visited : " + t.getName());
   }
 
   public void VisitFunc(Func f) {
 
+
+
+    //ThreeAdressesManager.getInstance().addFunction( new function(f.getName(), f.getArgs()) );
     visitTree(f);
 
-    print("Func visited : " + f.getName());
+
   }
 
   public void VisitAffectation(Affectation aff) {
+
+
     visitTree(aff);
-    print("Affectation visited : " + aff.getLeft() + " = " + aff.getRight());
   }
 
   public void VisitFunctionBody(FunctionBody def) {
@@ -48,59 +37,78 @@ public class ThreeAdressesVisitor extends Visitor{
   public void visitArgDeclaration(ArgDeclaration argD) {
 
     visitTree(argD);
-
-    print("ArgDeclaration visited :" + argD.getArgs().toString());
   }
 
   public void visitArgReturn(ArgReturn argR) {
 
+
     visitTree(argR);
 
-    print("ArgReturn visited :" + argR.getArgs().toString());
   }
 
   public void visitForDeclaration(ForDeclaration forD) {
-    print("ForDeclaration visited, loop on variable :" + forD.getVar());
+    //Stack.getInstance().addBlock("FOR", "ForLoop");
     visitTree(forD);
+    //Stack.getInstance().back();
+  }
+
+  public void visitWhileDeclaration(WhileDeclaration whileD) {
+    //Stack.getInstance().addBlock("WHILE", "WhileLoop");
+    visitTree(whileD);
+    //Stack.getInstance().back();
   }
 
   public void visitForeachDeclaration(ForeachDeclaration foreachD) {
 
-    print("ForeachDeclaration visited, loop on variable :" + foreachD.getVar());
     visitTree(foreachD);
-  }
 
-  public void visitWhileDeclaration(WhileDeclaration whileD) {
-    String s = "";
-    for (CommonTree t : (ArrayList<CommonTree>) whileD.getCond().getChildren()) {
-      s += t.getChild(0).toString();
-    }
-    print("WhileDeclaration visited, loop on condition :" + s);
-    visitTree(whileD);
 
   }
+
+  public void visitAppFunc(AppFunc appF) {
+    visitTree(appF);
+  }
+
 
 
   public void visitExpCond(ExpCond expC) {
 
+
     visitTree(expC);
-    print("ExpCond visited :" + expC.getLeft() + " =? " + expC.getRight());
   }
 
   public void visitProgrammDeclaration(ProgrammDeclaration progD) {
 
     visitTree(progD);
-    print("ProgrammDeclaration visited");
+
+
   }
 
-  public void visitConditionIF(ConditionIF condIF) {
-    print("ConditionIF visited");
+  public void visitConditionIF(IfDeclaration condIF) {
+    //ThreeAdressesManager.getInstance().setbaliseIf(condIF.getCond());
     visitTree(condIF);
+
+
+
+    //Stack.getInstance().back();
+
   }
 
   public void visitSymDeclaration(symbolDeclaration symD) {
-    print("symbol visited");
+    visitTree(symD);
   }
 
+  public void visitCons(CONSdeclaration consD) {
+    visitTree(consD);
+  }
+
+  public void visitVarDeclaration(varDeclaration varD) {
+    visitTree(varD);
+  }
+
+  public void visitElseDeclaration(ElseDeclaration elseD) {
+
+    visitTree(elseD);
+  }
 
 }

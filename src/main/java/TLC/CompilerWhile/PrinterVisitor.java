@@ -1,12 +1,10 @@
 package TLC.CompilerWhile;
 
-import static TLC.CompilerWhile.App.print;
-
 import TLC.CompilerWhile.ConcreteElements.Affectation;
 import TLC.CompilerWhile.ConcreteElements.AppFunc;
 import TLC.CompilerWhile.ConcreteElements.ArgDeclaration;
 import TLC.CompilerWhile.ConcreteElements.ArgReturn;
-import TLC.CompilerWhile.ConcreteElements.ConditionIF;
+import TLC.CompilerWhile.ConcreteElements.IfDeclaration;
 import TLC.CompilerWhile.ConcreteElements.ExpCond;
 import TLC.CompilerWhile.ConcreteElements.ForDeclaration;
 import TLC.CompilerWhile.ConcreteElements.ForeachDeclaration;
@@ -16,9 +14,6 @@ import TLC.CompilerWhile.ConcreteElements.ProgrammDeclaration;
 import TLC.CompilerWhile.ConcreteElements.WhileDeclaration;
 import TLC.CompilerWhile.ConcreteElements.symbolDeclaration;
 import TLC.CompilerWhile.ConcreteElements.typeDeclaration;
-import TLC.CompilerWhile.Errors.ErrorSender;
-import TLC.CompilerWhile.Errors.FunctionDeclarationDuplicateError;
-import TLC.CompilerWhile.Errors.MissingDeclarationError;
 import java.util.ArrayList;
 import org.antlr.runtime.tree.CommonTree;
 
@@ -33,6 +28,7 @@ public class PrinterVisitor extends Visitor {
     visitTree(t);
 
     print("Type Declaration visited : " + t.getName());
+
   }
 
   public void VisitFunc(Func f) {
@@ -40,16 +36,21 @@ public class PrinterVisitor extends Visitor {
     visitTree(f);
 
     print("Func visited : " + f.getName());
+
   }
 
   public void VisitAffectation(Affectation aff) {
+
     visitTree(aff);
     print("Affectation visited : " + aff.getLeft() + " = " + aff.getRight());
+
   }
 
   public void VisitFunctionBody(FunctionBody def) {
+
     visitTree(def);
     print("Starting visiting Function body");
+
   }
 
   public void visitArgDeclaration(ArgDeclaration argD) {
@@ -67,8 +68,10 @@ public class PrinterVisitor extends Visitor {
   }
 
   public void visitForDeclaration(ForDeclaration forD) {
+
     print("ForDeclaration visited, loop on variable :" + forD.getVar());
     visitTree(forD);
+
   }
 
   public void visitForeachDeclaration(ForeachDeclaration foreachD) {
@@ -76,10 +79,10 @@ public class PrinterVisitor extends Visitor {
     print("ForeachDeclaration visited, loop on variable :" + foreachD.getVar());
     visitTree(foreachD);
 
-
   }
 
   public void visitWhileDeclaration(WhileDeclaration whileD) {
+
     String s = "";
     for (CommonTree t : (ArrayList<CommonTree>) whileD.getCond().getChildren()) {
       s += t.getChild(0).toString();
@@ -93,23 +96,30 @@ public class PrinterVisitor extends Visitor {
   public void visitExpCond(ExpCond expC) {
 
     visitTree(expC);
-    print("ExpCond visited :" + expC.getLeft() + " =? " + expC.getRight());
+    print("ExpCond visited :" + expC.getCond());
+
   }
 
   public void visitProgrammDeclaration(ProgrammDeclaration progD) {
 
     visitTree(progD);
     print("ProgrammDeclaration visited");
+
   }
 
-  public void visitConditionIF(ConditionIF condIF) {
-    print("ConditionIF visited");
+  public void visitConditionIF(IfDeclaration condIF) {
+    print("IfDeclaration visited");
     visitTree(condIF);
   }
 
 
   public void visitAppFunc(AppFunc f) {
-    print("FuncCall visited"+f.getNode().getChild(0).toString());
+
+
+    print("FuncCall visited "+f.getNode().getChild(0).toString());
+
+    print("ARGUMENTS : "+f.getNode().getChildren().toString());
+
     visitTree(f);
   }
 
