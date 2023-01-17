@@ -1,5 +1,5 @@
 // $ANTLR 3.3 Nov 30, 2010 12:45:30 C:\\Users\\33665\\Desktop\\TLC\\TP2\\While.g 2023-01-17 14:43:36
-
+package TLC.CompilerWhile.AntLRFiles;
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
