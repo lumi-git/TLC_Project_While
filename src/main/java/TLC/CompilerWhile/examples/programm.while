@@ -1,25 +1,37 @@
 function add :
 read Op1, Op2
 %
+Result := Op1;
 
-A := Test;
-
- Result := Op1 ;
-
-foreach X in Op2 do
- Test := ( cons nil X )
-od;
-
-A := (other)
-
+if Op1 then
+        for Op2 do
+                if Op1 then
+                    if Op1 then
+                                       if Op1 then
+                                                          if Op1 then
+                                                                             if Op1 then
+                                                                                                 Result := Op1
+                                                                                             else
+                                                                                                  Result := Op2
+                                                                                             fi
+                                                                          else
+                                                                               Result := Op2
+                                                                          fi
+                                                       else
+                                                            Result := Op2
+                                                       fi
+                                    else
+                                         Result := Op2
+                                    fi
+                else
+                     Result := Op2
+                fi
+        od
+    else
+        Result := nil
+    fi
 %
-write Result
+write Result,Result2
 
-function other :
-read Op1, Op2
-%
-B := (add %Op1 %Op2)
-A := Test
 
-%
-write Result
+

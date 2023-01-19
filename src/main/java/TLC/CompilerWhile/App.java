@@ -21,7 +21,7 @@ public class App {
     try {
 
       String WorkspacePath = "src/main/java/TLC/CompilerWhile/examples/";
-      String fileName = "programm2.while";
+      String fileName = "programm.while";
 
       String LibPath = "src/main/java/TLC/CompilerWhile/Libs/";
 
@@ -51,10 +51,10 @@ public class App {
 
       try {
 
+
         CommonTree ct = (CommonTree) parser.start().getTree();
 
         System.out.println(ct.toStringTree());
-
 
         SymbolTableVisitor symbolTableVisitor = new SymbolTableVisitor(ct);
 
@@ -62,22 +62,15 @@ public class App {
 
         ThreeAdressesVisitor threeAdressesVisitor = new ThreeAdressesVisitor(ct);
 
-
-
-
         symbolTableVisitor.parse();
 
-        printerVisitor.parse();
+        //printerVisitor.parse();
 
         Stack.getInstance().PrintStackAsMD();
 
         threeAdressesVisitor.parse();
 
-
-
-
-
-        //Tranform the tree into 3 address code using
+        System.out.println(ThreeAdressesManager.getInstance().Build());
 
 
 

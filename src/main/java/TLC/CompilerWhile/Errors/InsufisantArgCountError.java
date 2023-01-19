@@ -17,7 +17,6 @@ public class InsufisantArgCountError extends WhileError {
         SymbolElement f = Stack.getInstance().findSymbolInCurrentPath(name);
 
 
-
         m_message = "Missing arguments for the function : " + name + "\n| Function "+name+ " Takes "+ f.getParamCount();
 
     }

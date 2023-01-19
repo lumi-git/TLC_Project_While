@@ -26,6 +26,8 @@ public class Visitor {
 
   public void visitTreeRecursive(CommonTree ct) {
 
+
+
     switch (ct.getType()) {
 
       case WhileParser.START -> {
@@ -80,9 +82,8 @@ public class Visitor {
 
       case WhileParser.CONS -> {
 
-        for (int i = 0; i < ct.getChildCount(); i++) {
-          visitTreeRecursive((CommonTree) ct.getChild(i));
-        }
+        CONSdeclaration con = new CONSdeclaration(ct);
+        con.accept(this);
       }
 
       case WhileParser.Symbol -> {
@@ -93,7 +94,7 @@ public class Visitor {
 
       }
 
-      case WhileParser.Variable -> {
+      case WhileParser.VARS -> {
 
         varDeclaration varD = new varDeclaration(ct);
         varD.accept(this);
@@ -139,8 +140,35 @@ public class Visitor {
         appF.accept(this);
       }
 
+      case WhileParser.LEFT -> {
+        LeftDefinition left = new LeftDefinition((CommonTree) ct);
+        left.accept(this);
+      }
+
+        case WhileParser.RIGHT -> {
+          RightDefinition right = new RightDefinition((CommonTree) ct);
+            right.accept(this);
+        }
+
+        case WhileParser.THEN -> {
+          ThenDefinition then = new ThenDefinition((CommonTree) ct);
+          then.accept(this);
+        }
+
 
     }
+
+  }
+
+  public void VisitLeftDeclaration(LeftDefinition left) {
+
+  }
+
+  public void VisitThenDeclaration(ThenDefinition then) {
+
+  }
+
+  public void VisitRightDeclaration(RightDefinition right) {
 
   }
 

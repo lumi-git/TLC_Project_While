@@ -11,6 +11,8 @@ public class Stack {
   static Stack m_instance;
   static int maxDepth = 100000;
 
+  private int index = 1;
+
   public static void setRecurtionDepth(int depth){
     maxDepth = depth;
   }
@@ -30,17 +32,11 @@ public class Stack {
   private Block currentBlock;
 
   private Stack(){
-
     this.stack = new ArrayList<Block>();
-
   }
 
-
   public boolean VerifyArgsCount(String name, int argsCount) {
-
     return findSymbolInCurrentPath(name).getParamCount() == argsCount;
-
-
   }
 
 
@@ -71,6 +67,16 @@ public class Stack {
 
   }
 
+  public String getAdressOfSymbol(String name){
+    if (findSymbolInCurrentPath(name) != null) {
+
+      return "SYM_" + findSymbolInCurrentPath(name).getUniqueID();
+    }
+    else {
+      return "nil";
+    }
+  }
+
   public int getUniqueID(){
     return this.id;
   }
@@ -87,6 +93,10 @@ public class Stack {
     this.stack.remove(this.stack.size()-1);
   }
 
+  public void next(){
+    currentBlock = stack.get(this.index);
+    this.index+=1;
+  }
 
   public void back(){
 
@@ -98,8 +108,6 @@ public class Stack {
   public String toString(){
 
     String s = "Symbol Table of : \n";
-
-
     for (Block block : stack) {
       s += block + "\n";
     }
@@ -143,7 +151,7 @@ public class Stack {
         return s;
       }
     }
-    return null;
+    return new SymbolElement("nil","nil","var",0,0,0);
   }
 
   public SymbolElement findSymbolInCurrentBlock(String name){
@@ -155,7 +163,7 @@ public class Stack {
     if(currentBlock != null){
       return currentBlock.findSymbolInParent(name);
     }
-    return null;
+    return new SymbolElement("nil","nil","var",0,0,0);
   }
 
 }

@@ -2,7 +2,7 @@ function not:
 read Arg1
 %
     if Arg1 then
-        Result := nil
+        Result := A
     else
         Result := nil
     fi
@@ -11,7 +11,7 @@ write Result
 
 
 function stdlibtestADD:
-read Arg1
+read Arg1,Arg2
 %
     if Arg1 then
         Result := nil

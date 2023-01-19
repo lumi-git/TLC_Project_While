@@ -6,13 +6,11 @@ import org.antlr.runtime.tree.CommonTree;
 
 public class WhileDeclaration extends TreeNode {
 
-
   CommonTree cond;
 
   public WhileDeclaration(CommonTree astNode) {
     super(astNode);
     this.cond = (CommonTree) astNode.getChild(0);
-
   }
 
   @Override

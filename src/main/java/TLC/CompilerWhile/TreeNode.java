@@ -14,15 +14,12 @@ public abstract class TreeNode {
     this.line = astNode.getLine();
     this.column = astNode.getCharPositionInLine();
   }
-
   public int getColumn() {
     return column;
   }
-
   public int getLine() {
     return line;
   }
-
   public CommonTree getNode() {
     return node;
   }

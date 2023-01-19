@@ -1,27 +1,10 @@
 package TLC.CompilerWhile;
 
-import TLC.CompilerWhile.ConcreteElements.Affectation;
-import TLC.CompilerWhile.ConcreteElements.AppFunc;
-import TLC.CompilerWhile.ConcreteElements.ArgDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ArgReturn;
-import TLC.CompilerWhile.ConcreteElements.CONSdeclaration;
-import TLC.CompilerWhile.ConcreteElements.IfDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ElseDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ExpCond;
-import TLC.CompilerWhile.ConcreteElements.ForDeclaration;
-import TLC.CompilerWhile.ConcreteElements.ForeachDeclaration;
-import TLC.CompilerWhile.ConcreteElements.Func;
-import TLC.CompilerWhile.ConcreteElements.FunctionBody;
-import TLC.CompilerWhile.ConcreteElements.ProgrammDeclaration;
-import TLC.CompilerWhile.ConcreteElements.WhileDeclaration;
-import TLC.CompilerWhile.ConcreteElements.symbolDeclaration;
-import TLC.CompilerWhile.ConcreteElements.typeDeclaration;
-import TLC.CompilerWhile.ConcreteElements.varDeclaration;
-import TLC.CompilerWhile.Errors.ErrorSender;
-import TLC.CompilerWhile.Errors.FunctionDeclarationDuplicateError;
-import TLC.CompilerWhile.Errors.InsufisantArgCountError;
-import TLC.CompilerWhile.Errors.UnexistingSymbolError;
+import TLC.CompilerWhile.ConcreteElements.*;
+import TLC.CompilerWhile.Errors.*;
 import org.antlr.runtime.tree.CommonTree;
+
+import java.util.ArrayList;
 
 public class SymbolTableVisitor extends Visitor {
 
@@ -53,29 +36,33 @@ public class SymbolTableVisitor extends Visitor {
   }
 
   public void VisitAffectation(Affectation aff) {
-    for (CommonTree t : aff.getRight()) {
-      if (Stack.getInstance().findSymbolInCurrentPath(t.toString()) == null) {
-        //Not initialized
 
 
-      }
+    for (CommonTree ct : (ArrayList<CommonTree>) aff.getLeft().getChildren()){
+      Stack.getInstance().addTracedSymbol(
+              new SymbolElement(ct.getChild(0).toString(), "var", "tree", aff.getLine(),
+                      aff.getColumn(),0));
+
     }
-    Stack.getInstance().addTracedSymbol(
-        new SymbolElement(aff.getLeft().toString(), "var", "tree", aff.getLine(),
-            aff.getColumn(),0));
+
 
     visitTree(aff);
   }
+
 
   public void VisitFunctionBody(FunctionBody def) {
     visitTree(def);
   }
 
+
+  public void VisitThenDeclaration(ThenDefinition thenD) {
+    visitTree(thenD);
+  }
+
+
   public void visitArgDeclaration(ArgDeclaration argD) {
     for (CommonTree t : argD.getArgs()) {
-
-      //if the var is not allready declared in the path, we declare it in this block
-
+      //if the var is not already declared in the path, we declare it in this block
         Stack.getInstance().addTracedSymbol(
             new SymbolElement(t.getText(), "var", "tree", argD.getLine(), argD.getColumn(),0));
 
@@ -123,25 +110,15 @@ public class SymbolTableVisitor extends Visitor {
 
   public void visitAppFunc(AppFunc appF) {
 
-
-
-
     if (Stack.getInstance().findSymbolInCurrentPath(appF.getName()) == null ){
       ErrorSender.sendError(new UnexistingSymbolError(appF.getName(), appF.getLine(), appF.getColumn()), false);
-
-
 
     }
     else if(! Stack.getInstance().VerifyArgsCount(appF.getName(), appF.getArgCount())){
       ErrorSender.sendError(new InsufisantArgCountError(appF.getName(), appF.getLine(), appF.getColumn()), false);
     }
 
-
-
-
-
     visitTree(appF);
-
 
   }
 
@@ -188,6 +165,14 @@ public class SymbolTableVisitor extends Visitor {
     visitTree(elseD);
     //Stack.getInstance().back();
   }
+
+  public void VisitLeftDeclaration(LeftDefinition leftD) {
+    visitTree(leftD);
+  }
+
+    public void VisitRightDeclaration(RightDefinition rightD) {
+        visitTree(rightD);
+    }
 
 
 }

@@ -8,21 +8,23 @@ import org.antlr.runtime.tree.CommonTree;
 
 public class Affectation extends TreeNode {
 
-  ArrayList<CommonTree> right;
+  CommonTree right;
   CommonTree left;
 
   public Affectation(CommonTree astNode) {
     super(astNode);
+
+
     line = astNode.getLine();
     column = astNode.getCharPositionInLine();
-    right = new ArrayList<>();
 
-    left = (CommonTree) astNode.getChild(0).getChild(0);
-    for (int i = 1; i < astNode.getChildCount(); i++) {
-      if (astNode.getChild(i).getType() == WhileParser.VARS) {
-        right.add((CommonTree) astNode.getChild(i).getChild(0));
-      }
-    }
+    left = (CommonTree) astNode.getChild(0);
+
+    right = (CommonTree) astNode.getChild(1);
+
+
+
+
   }
 
   @Override
@@ -34,7 +36,7 @@ public class Affectation extends TreeNode {
     return left;
   }
 
-  public ArrayList<CommonTree> getRight() {
+  public CommonTree getRight() {
     return right;
   }
 

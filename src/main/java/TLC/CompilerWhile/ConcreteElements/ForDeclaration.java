@@ -13,7 +13,7 @@ public class ForDeclaration extends TreeNode {
   public ForDeclaration(CommonTree astNode) {
     super(astNode);
     m_astNode = astNode;
-    this.var = (CommonTree) astNode.getChild(1).getChild(0);
+    this.var = (CommonTree) astNode.getChild(0).getChild(0);
 
   }
 
