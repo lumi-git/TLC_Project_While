@@ -9,7 +9,7 @@ class ID0_START_0{
 
    ->   stdlibtestADD , tree , func , 2 , UniqueID: 3
 
-   ->   add , tree , func , 2 , UniqueID: 7
+   ->   main , tree , func , 2 , UniqueID: 7
 
 }
 
@@ -38,7 +38,7 @@ class ID2_FUNC_1{
 }
 
 class ID3_FUNC_2{
-   Name : add
+   Name : main
    -------------------------
    | name | kind | type |
    --------------------------

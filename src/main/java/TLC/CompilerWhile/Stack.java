@@ -77,6 +77,22 @@ public class Stack {
     }
   }
 
+  public boolean ExistMain(){
+    SymbolElement main = findSymbol("main");
+
+    if(main != null){
+      if (main.getkind() == "func"){
+        return true;
+      }
+
+
+
+    }
+    return false;
+
+  }
+
+
   public int getUniqueID(){
     return this.id;
   }

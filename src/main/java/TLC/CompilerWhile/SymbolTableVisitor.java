@@ -139,6 +139,10 @@ public class SymbolTableVisitor extends Visitor {
     visitTree(progD);
     Stack.getInstance().back();
 
+    if(!Stack.getInstance().ExistMain()){
+      ErrorSender.sendError(new MissingMainError(), false);
+    }
+
   }
 
   public void visitConditionIF(IfDeclaration condIF) {
