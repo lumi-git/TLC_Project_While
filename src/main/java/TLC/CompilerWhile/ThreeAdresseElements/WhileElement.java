@@ -55,4 +55,9 @@ public class WhileElement extends ThreeAdressElement{
             children.add(e);
 
     }
+
+    @Override
+    public String toCpp() {
+        return null;
+    }
 }

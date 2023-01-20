@@ -17,13 +17,8 @@ public class Affectation extends TreeNode {
 
     line = astNode.getLine();
     column = astNode.getCharPositionInLine();
-
     left = (CommonTree) astNode.getChild(0);
-
     right = (CommonTree) astNode.getChild(1);
-
-
-
 
   }
 

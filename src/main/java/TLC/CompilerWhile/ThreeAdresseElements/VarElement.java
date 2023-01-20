@@ -1,7 +1,6 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
 public class VarElement extends ThreeAdressElement{
-
         private String variable;
 
         public VarElement(String variable) {
@@ -15,7 +14,11 @@ public class VarElement extends ThreeAdressElement{
 
         @Override
         public void addElement(ThreeAdressElement e) {
+        }
 
+        @Override
+        public String toCpp() {
+                return variable;
         }
 
 }

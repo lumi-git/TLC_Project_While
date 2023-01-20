@@ -20,4 +20,16 @@ public class SourceElement extends ThreeAdressElement{
         children.add(e);
     }
 
+    @Override
+    public String toCpp() {
+
+        String s = "import des_trucs";
+
+        for (ThreeAdressElement e : children)
+            s += e.toCpp();
+
+
+        return s;
+    }
+
 }

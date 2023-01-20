@@ -1,0 +1,12 @@
+function main :
+read A,B,C,D
+%
+
+    for A do
+        Liste := (list (cons A B) A B C )
+    od;
+
+    Liste := (tl A )
+
+%
+write Liste

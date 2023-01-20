@@ -4,6 +4,9 @@ import TLC.CompilerWhile.ThreeAdresseElements.IfElement;
 import TLC.CompilerWhile.ThreeAdresseElements.SourceElement;
 import TLC.CompilerWhile.ThreeAdresseElements.ThreeAdressElement;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ThreeAdressesManager {
 
     private ThreeAdressElement program ;
@@ -46,6 +49,27 @@ public class ThreeAdressesManager {
 
     public String Build() {
         return program.Build();
+    }
+
+    public String ToCpp(){
+        return program.toCpp();
+    }
+
+    public void printToFileCPP(){
+        try {
+            FileWriter myWriter = new FileWriter("src/main/java/TLC/CompilerWhile/CPPOUT/programmcpp.txt");
+
+            String programString = ToCpp();
+            myWriter.write(programString);
+
+            myWriter.close();
+            System.out.println("Succesfully generated diagram of the symbol table at src/main/java/TLC/CompilerWhile/GeneratedDiagrams/SymbolTable.md");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+
     }
 
 

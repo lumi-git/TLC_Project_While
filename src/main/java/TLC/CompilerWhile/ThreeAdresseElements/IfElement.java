@@ -2,7 +2,10 @@ package TLC.CompilerWhile.ThreeAdresseElements;
 import TLC.CompilerWhile.ThreeAdressesManager;
 
 import java.util.ArrayList;
-
+/**
+ * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
+ *  Based on the AST and the following method, it will generate the ThreeAdressCode of a If element
+ **/
 public class IfElement extends ThreeAdressElement{
 
     private CondElement condition;
@@ -24,7 +27,10 @@ public class IfElement extends ThreeAdressElement{
         uniquID = ThreeAdressesManager.getInstance().getUniqLabelID();
         hasElse = hasElse_;
     }
-
+    /**
+     * This method will Build the ThreeAdress code based on his label and the condition, then and else build
+     * @return the ThreeAdressCode of the goto
+     **/
     public String Build() {
 
         String s = "";
@@ -63,7 +69,10 @@ public class IfElement extends ThreeAdressElement{
         }
     }
 
-
+    @Override
+    public String toCpp() {
+        return null;
+    }
 
 
 }

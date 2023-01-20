@@ -153,11 +153,13 @@ public class ThreeAdressesVisitor extends Visitor{
   }
 
   public void visitCons(CONSdeclaration consD) {
+
     ThreeAdressesManager.getInstance().addElement(new ConsElement());
 
     visitTree(consD);
 
     ThreeAdressesManager.getInstance().back();
+
   }
 
   public void visitVarDeclaration(varDeclaration varD) {
@@ -209,6 +211,43 @@ public class ThreeAdressesVisitor extends Visitor{
 
     ThreeAdressesManager.getInstance().back();
   }
+
+  public void VisitListDeclaration(ListDeclaration listD) {
+
+    ThreeAdressesManager.getInstance().addElement(new ListElement());
+
+    visitTree(listD);
+
+    ThreeAdressesManager.getInstance().back();
+  }
+
+  public void VisitNilDeclaration(NilDeclaration nilD) {
+
+    ThreeAdressesManager.getInstance().addElement(new NilElement());
+
+    visitTree(nilD);
+
+    ThreeAdressesManager.getInstance().back();
+  }
+
+    public void VisitHDDeclaration(HeadDeclaration headD) {
+
+        ThreeAdressesManager.getInstance().addElement(new HdElement());
+
+        visitTree(headD);
+
+        ThreeAdressesManager.getInstance().back();
+    }
+
+    public void VisitTLDeclaration(TailDeclaration tailD) {
+
+        ThreeAdressesManager.getInstance().addElement(new TlElement());
+
+        visitTree(tailD);
+
+        ThreeAdressesManager.getInstance().back();
+    }
+
 
 
 }

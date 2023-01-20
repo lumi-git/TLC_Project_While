@@ -8,7 +8,7 @@ public class ConsElement extends ThreeAdressElement{
 
     @Override
     public String Build() {
-        String s = "CONS :";
+        String s = "CONS ";
         for (ThreeAdressElement tae : this.getChildren()) {
             s += tae.Build();
         }
@@ -18,5 +18,10 @@ public class ConsElement extends ThreeAdressElement{
     @Override
     public void addElement(ThreeAdressElement e) {
         children.add(e);
+    }
+
+    @Override
+    public String toCpp() {
+        return null;
     }
 }

@@ -15,6 +15,8 @@ public class AppTest
      *
      * @param testName name of the test case
      */
+
+
     public AppTest( String testName )
     {
         super( testName );
@@ -33,6 +35,8 @@ public class AppTest
      */
     public void testApp()
     {
+
         assertTrue( true );
+
     }
 }

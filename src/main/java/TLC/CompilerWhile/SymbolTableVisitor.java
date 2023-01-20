@@ -178,5 +178,8 @@ public class SymbolTableVisitor extends Visitor {
         visitTree(rightD);
     }
 
+    public void VisitListDeclaration(ListDeclaration listD) {
+        visitTree(listD);
+    }
 
 }

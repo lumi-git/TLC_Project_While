@@ -20,4 +20,9 @@ public class LeftAssignationElement extends ThreeAdressElement{
     public void addElement(ThreeAdressElement e) {
         children.add(e);
     }
+
+    @Override
+    public String toCpp() {
+        return null;
+    }
 }

@@ -21,4 +21,9 @@ public class ReturnElement extends ThreeAdressElement{
 
     }
 
+    @Override
+    public String toCpp() {
+        return null;
+    }
+
 }

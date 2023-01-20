@@ -28,9 +28,9 @@ public abstract class ThreeAdressElement {
 
     public abstract String Build();
 
-    public void addElement(ThreeAdressElement e) {
+    public abstract void addElement(ThreeAdressElement e);
 
-    }
+    public abstract String toCpp();
 
 
 }

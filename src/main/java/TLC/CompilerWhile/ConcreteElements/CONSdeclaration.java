@@ -8,11 +8,15 @@ public class CONSdeclaration extends TreeNode {
 
 
   public CONSdeclaration(CommonTree astNode) {
+
     super(astNode);
+
   }
 
   @Override
   public void accept(Visitor v) {
+
     v.visitCons(this);
+
   }
 }

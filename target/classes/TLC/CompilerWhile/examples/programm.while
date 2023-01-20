@@ -1,0 +1,37 @@
+function main :
+read Op1, Op2
+%
+Result := Op1;
+
+if Op1 then
+        for Op2 do
+                if Op1 then
+                    if Op1 then
+                                       if Op1 then
+                                                          if Op1 then
+                                                                             if Op1 then
+                                                                                                 Result := Op1
+                                                                                             else
+                                                                                                  Result := Op2
+                                                                                             fi
+                                                                          else
+                                                                               Result := Op2
+                                                                          fi
+                                                       else
+                                                            Result := Op2
+                                                       fi
+                                    else
+                                         Result := Op2
+                                    fi
+                else
+                     Result := Op2
+                fi
+        od
+    else
+        Result := nil
+    fi
+%
+write Result,Result2
+
+
+

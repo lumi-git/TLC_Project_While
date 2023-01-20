@@ -1,16 +1,17 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
 import TLC.CompilerWhile.ThreeAdressesManager;
-
+/**
+ * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
+ *  Based on the AST and the following method, it will generate the ThreeAdressCode of a ForEach element
+ */
 public class ForEachElement extends ThreeAdressElement{
-
 
     private VarElement variableLoop;
 
     private VarElement variable;
 
-
-    int recieve = 0;
+    int receive = 0;
 
     private String ForEachLabel = "FOR_EACH";
 
@@ -28,7 +29,11 @@ public class ForEachElement extends ThreeAdressElement{
 
 
     }
-
+    /**
+     * This method will Build the ThreeAdress code based on the forEachLabel with a unique id and
+     * the children and condition build method
+     * @return the ThreeAdressCode of the for each element
+     **/
     @Override
     public String Build() {
         CondElement cnd = new CondElement();
@@ -46,22 +51,27 @@ public class ForEachElement extends ThreeAdressElement{
         s += Condition.Build();
         return s;
     }
-
+    /**
+     * The method adds children in the list of children which will be build later
+     * The method adds in a first hand an instance of VarElement (receive=0) then adds another varElement(receive=1)
+     * Finally it adds the following ThreeAdressElement instance
+     * @param e a ThreeAdressElement
+     **/
     @Override
     public void addElement(ThreeAdressElement e) {
-        if (recieve == 0){
+        if (receive == 0){
             if(e instanceof VarElement){
                 variableLoop = (VarElement) e;
-                recieve++;
+                receive++;
             }
             else{
                 children.add(e);
             }
         }
-        else if ( recieve == 1){
+        else if ( receive == 1){
             if(e instanceof VarElement){
                 variable = (VarElement) e;
-                recieve++;
+                receive++;
             }
             else{
                 children.add(e);
@@ -71,5 +81,10 @@ public class ForEachElement extends ThreeAdressElement{
             children.add(e);
 
 
+    }
+
+    @Override
+    public String toCpp() {
+        return null;
     }
 }

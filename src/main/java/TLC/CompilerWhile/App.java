@@ -14,15 +14,27 @@ import org.antlr.runtime.tree.CommonTree;
 
 import java.io.File;
 
+/**
+ * @Description : This class is the principle class of the compiler,
+ * it's responsible to recover the main file of source code.
+ * With help of a parser and a lexer, this class will create a tree representative of the source code.
+ *
+ * Then with the use of a visitor pattern, we will verify the code and convert it to a new language.
+ *
+ */
+
 public class App {
 
   public static void main(String[] a) {
 
     try {
 
+      //recovering the files we will work on
       String WorkspacePath = "src/main/java/TLC/CompilerWhile/examples/";
-      String fileName = "programm.while";
 
+      String fileName = "programm4.while";
+
+      //the std lib, containing the classical function of our language
       String LibPath = "src/main/java/TLC/CompilerWhile/Libs/";
 
       String StdLib = "StdLib.while";
@@ -31,19 +43,24 @@ public class App {
 
       text = readFileAsString(LibPath + StdLib);
 
+      //offset due to the adding of the lib at the top of the code
       int libOffset = text.lines().toList().size();
-
       WhileError.OFFSET = libOffset;
 
 
       text += readFileAsString(WorkspacePath + fileName);
 
+      //creating a stream of char représentative of the source code
       CharStream stream = new ANTLRStringStream(text);
 
+
+        //creating a lexer with the stream of char
       WhileLexer lexer = new WhileLexer(stream);
 
+        //creating a token stream with the lexer
       TokenStream tk = new CommonTokenStream(lexer);
 
+        //creating a parser with the token stream
       WhileParser parser = new WhileParser(tk);
 
 
@@ -51,26 +68,37 @@ public class App {
 
       try {
 
-
+        //the common tree is a representation of the AST
         CommonTree ct = (CommonTree) parser.start().getTree();
+
 
         System.out.println(ct.toStringTree());
 
+        //creating a visitor to create the simbole table with the common tree
         SymbolTableVisitor symbolTableVisitor = new SymbolTableVisitor(ct);
 
+        //this vsitor is only to print the
         PrinterVisitor printerVisitor = new PrinterVisitor(ct);
 
+        //creating a visitor to convert the verified code to a new simpler language
         ThreeAdressesVisitor threeAdressesVisitor = new ThreeAdressesVisitor(ct);
+
+
 
         symbolTableVisitor.parse();
 
         //printerVisitor.parse();
 
+        //this prints the stack in a md file located in the GeneratedDiagrams folder of the project
         Stack.getInstance().PrintStackAsMD();
 
         threeAdressesVisitor.parse();
 
         System.out.println(ThreeAdressesManager.getInstance().Build());
+
+        ThreeAdressesManager.getInstance().printToFileCPP();
+
+
 
 
 
