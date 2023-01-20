@@ -9,7 +9,9 @@ class ID0_START_0{
 
    ->   stdlibtestADD , tree , func , 2 , UniqueID: 3
 
-   ->   main , tree , func , 4 , UniqueID: 7
+   ->   foo , tree , func , 2 , UniqueID: 7
+
+   ->   main , tree , func , 0 , UniqueID: 12
 
 }
 
@@ -38,19 +40,28 @@ class ID2_FUNC_1{
 }
 
 class ID3_FUNC_2{
+   Name : foo
+   -------------------------
+   | name | kind | type |
+   --------------------------
+   ->   X , tree , var , 0 , UniqueID: 8
+
+   ->   Y , tree , var , 0 , UniqueID: 9
+
+   ->   Res1 , tree , var , 0 , UniqueID: 10
+
+   ->   Res2 , tree , var , 0 , UniqueID: 11
+
+}
+
+class ID4_FUNC_3{
    Name : main
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   A , tree , var , 0 , UniqueID: 8
+   ->   Result , tree , var , 0 , UniqueID: 13
 
-   ->   B , tree , var , 0 , UniqueID: 9
-
-   ->   C , tree , var , 0 , UniqueID: 10
-
-   ->   D , tree , var , 0 , UniqueID: 11
-
-   ->   Liste , tree , var , 0 , UniqueID: 12
+   ->   Test , tree , var , 0 , UniqueID: 14
 
 }
 
@@ -59,5 +70,7 @@ ID0_START_0 --|> ID1_FUNC_0
 ID0_START_0 --|> ID2_FUNC_1
 
 ID0_START_0 --|> ID3_FUNC_2
+
+ID0_START_0 --|> ID4_FUNC_3
 
 ```

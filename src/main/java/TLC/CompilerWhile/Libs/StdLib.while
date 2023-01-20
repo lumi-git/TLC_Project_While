@@ -1,7 +1,7 @@
 function not:
 read Arg1
 %
-    if Arg1 then
+    if Arg1 =? Arg1 then
         Result := A
     else
         Result := nil

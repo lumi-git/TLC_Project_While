@@ -37,6 +37,10 @@ public class ThenElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        return null;
+        String s = "";
+        for (ThreeAdressElement e : children) {
+            s += e.toCpp();
+        }
+        return s;
     }
 }

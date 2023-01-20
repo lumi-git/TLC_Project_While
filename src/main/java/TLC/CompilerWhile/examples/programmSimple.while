@@ -1,0 +1,18 @@
+function foo :
+read X, Y
+%
+    Res1 := (cons X nil);
+    Res2 := (cons Y nil)
+
+%
+write Res1, Res2
+
+function main :
+read
+%
+    Result := nil;
+    Test := nil;
+    Result := (foo Result Test)
+
+%
+write Result

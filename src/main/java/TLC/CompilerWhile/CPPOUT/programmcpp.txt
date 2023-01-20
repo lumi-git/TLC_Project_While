@@ -1,13 +1,31 @@
 import des_trucs
 public void not( SYM_1 ){
-nullreturn null;
+if(){
+node SYM_2 = node(node nil);
+}else{
+node SYM_2 = node(node NULL);
+}
+return SYM_2;
 } 
 
 public void stdlibtestADD( SYM_4 SYM_5 ){
-nullreturn null;
+if(){
+node SYM_6 = node(node NULL);
+}else{
+node SYM_6 = node(node NULL);
+}
+return SYM_6;
 } 
 
-public void main( SYM_8 SYM_9 SYM_10 SYM_11 ){
-nullnull = null;
-return null;
+public void foo( SYM_8 SYM_9 ){
+node SYM_10 = node(node SYM_8, NULL);
+node SYM_11 = node(node SYM_9, NULL);
+return SYM_10, SYM_11;
+} 
+
+public void main( ){
+node SYM_13 = node(node NULL);
+node SYM_14 = node(node NULL);
+node SYM_13 = node(node foo(SYM_13, SYM_14));
+return SYM_13;
 } 

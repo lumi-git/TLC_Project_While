@@ -80,7 +80,13 @@ public class IfElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        return null;
+        String s = "";
+        s += "if(" + condition.toCpp() + "){\n";
+        s += Then.toCpp();
+        s += "}else{\n";
+        s += Else.toCpp();
+        s += "}\n";
+        return s;
     }
 
 

@@ -27,6 +27,8 @@ tokens{
 	APPFUNC;
 	RIGHT;
 	LEFT;
+	RIGHTCOND;
+	LEFTCOND;
 	THEN;
 	NIL;
 }
@@ -68,7 +70,7 @@ command	:	'nop'|
 vars	:	t1=variable (',' t2=vars) ? -> $t1 $t2?;
 exprs	:	expression (',' exprs)?;
 
-exprBase:	'nil'->NIL |
+exprBase:	Nil->^(NIL)|
 		'(''cons'')'-> ^(CONS)|
 		'(''list'')'-> ^(LIST)|
 		variable|
@@ -80,10 +82,11 @@ exprBase:	'nil'->NIL |
 		'(' t5=Symbol variable+ ')'->^(APPFUNC $t5 variable+);
 		
 expression
-	:	exprBase('=?' exprBase)? -> exprBase exprBase?;
+	:	exprBase('=?' exprBase)? -> ^(LEFTCOND exprBase) ^(RIGHTCOND exprBase)?;
 	
 lexpr	:	exprBase*->exprBase*;
 variable:	t1=Variable -> ^(VARS $t1);
+Nil	:	'nil';
 Variable:	'A'..'Z' ('A'..'Z'|'a'..'z'|'0'..'9')*('!'|'?') ? ;
 Symbol 	:	'a'..'z' ('A'..'Z'|'a'..'z'|'0'..'9')*('!'|'?') ? ;
 

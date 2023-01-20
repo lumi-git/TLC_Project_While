@@ -12,36 +12,12 @@ read Arg1,Arg2,Arg3
 write Result
 
 
-// Logical and
+
 function main:
-read Op1,Op2
+read
 %
-    // not Op1
-    if(not Op1)then
-        Result := nil
-    else
-        Result := (other Op2 Op1 A)
-        // ici si ca bug, faut aller voir dans AppFunc, c'est que vous avez modifier l'AST et ca ne correspond plus au constructeur de AppFunc
-    fi;
-
-    for Op2 do
-        Result := (tl Result);
-        Liste := (list Op2 Op1 Aebzeff);
-        if(not Op2)then
-            D := (hd (cons B A) )
-        else
-            Result := (other Op2 Op1 A)
-        fi
-
-    od;
-
-    foreach X in Op2 do
-     Test := ( cons nil X )
-    od
-
+    Result := nil;
+    Result := (other Result A B)
 
 %
 write Result,D
-
-
-void func( Node arg1 , Node arg2 )

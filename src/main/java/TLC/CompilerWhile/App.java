@@ -32,7 +32,7 @@ public class App {
       //recovering the files we will work on
       String WorkspacePath = "src/main/java/TLC/CompilerWhile/examples/";
 
-      String fileName = "programm4.while";
+      String fileName = "programmSimple.while";
 
       //the std lib, containing the classical function of our language
       String LibPath = "src/main/java/TLC/CompilerWhile/Libs/";

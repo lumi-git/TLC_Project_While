@@ -39,7 +39,17 @@ public class ReturnElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        return null;
+        String s = "";
+        for (ThreeAdressElement e : children){
+            if (children.get(children.size()-1) == e){
+                s += e.toCpp();
+            }
+            else{
+                s += e.toCpp() + ", ";
+            }
+        }
+
+        return s;
     }
 
 }

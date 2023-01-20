@@ -40,6 +40,19 @@ public class FuncCallElement extends ThreeAdressElement{
 
     @Override
     public String toCpp() {
-        return null;
+        String s = funcName + "(" ;
+
+        for (ThreeAdressElement e : children){
+            if (children.get(children.size()-1) == e){
+                s += e.toCpp();
+            }
+            else{
+                s += e.toCpp() + ", ";
+            }
+        }
+
+        s +=")";
+
+        return s;
     }
 }

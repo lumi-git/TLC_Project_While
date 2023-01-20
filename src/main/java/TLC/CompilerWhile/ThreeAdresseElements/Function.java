@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public class Function extends ThreeAdressElement {
 
     private String name;
-    private ArgDeclarationElement parameters;
+    private ArgDeclarationElement parameters = new ArgDeclarationElement();
 
-    private ReturnElement returnElement;
+    private ReturnElement returnElement = new ReturnElement();
 
     public Function(String name) {
 
@@ -61,7 +61,6 @@ public class Function extends ThreeAdressElement {
 
         for (ThreeAdressElement e : children)
             s += e.toCpp();
-
 
         s+= "return "+ returnElement.toCpp() +";\n";
         s += "} \n";

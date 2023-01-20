@@ -1,27 +1,36 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
-public class ConsElement extends ThreeAdressElement{
+public class LeftCondElement extends ThreeAdressElement{
 
-    public ConsElement(){
+    public LeftCondElement() {
         super();
     }
 
     @Override
     public String Build() {
-        String s = "CONS ";
+        String s ="" ;
+
         for (ThreeAdressElement tae : this.getChildren()) {
-            s += tae.Build();
+            s += tae.Build() + " ";
         }
+
         return s;
     }
 
     @Override
     public void addElement(ThreeAdressElement e) {
+        System.out.println(e);
         children.add(e);
     }
 
     @Override
     public String toCpp() {
-        return children.get(0).toCpp() + ", " + children.get(1).toCpp();
+        String s ="" ;
+
+        for (ThreeAdressElement tae : this.getChildren()) {
+            s += tae.Build() + " ";
+        }
+
+        return s;
     }
 }

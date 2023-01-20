@@ -199,9 +199,29 @@ public class Visitor {
           tail.accept(this);
         }
 
+      case WhileParser.RIGHTCOND -> {
+        RightCondDeclaration rightcond = new RightCondDeclaration((CommonTree) ct);
+        rightcond.accept(this);
+      }
+
+      case WhileParser.LEFTCOND -> {
+        LeftCondDeclaration leftcond = new LeftCondDeclaration((CommonTree) ct);
+        leftcond.accept(this);
+
+
+      }
+
     }
 
   }
+
+  public void VisitLeftCondDeclaration(LeftCondDeclaration leftcond) {
+
+  }
+
+    public void VisitRightCondDeclaration(RightCondDeclaration rightcond) {
+
+    }
 
   public void VisitTLDeclaration(TailDeclaration head){
 

@@ -12,13 +12,11 @@ public class ListElement extends ThreeAdressElement{
      */
     @Override
     public String Build() {
-        String s ="" ;//"{";
+        String s ="" ;
 
         for (ThreeAdressElement tae : this.getChildren()) {
-            s += tae.Build()+" ";
+            s += tae.Build() + " ";
         }
-        //s+="}";
-
 
         return s;
     }

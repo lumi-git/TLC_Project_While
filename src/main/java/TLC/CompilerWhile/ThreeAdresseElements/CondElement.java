@@ -6,8 +6,12 @@ package TLC.CompilerWhile.ThreeAdresseElements;
  **/
 public class CondElement extends ThreeAdressElement{
 
+    LeftCondElement leftCondElement = new LeftCondElement();
+
+    RightCondElement rightCondElement = new RightCondElement();
 
     public CondElement() {
+        super();
     }
     /**
      * This method will Build the ThreeAdress code based on the children build method
@@ -16,8 +20,15 @@ public class CondElement extends ThreeAdressElement{
     @Override
     public String Build() {
         String s = "" ;
-        for (ThreeAdressElement e : children)
-            s += e.Build() + " ";
+
+        s += leftCondElement.Build() ;
+
+        if (rightCondElement.getChildren().size() > 0){
+            s += "==";
+            s += rightCondElement.Build() ;
+        }
+
+
 
         return s;
     }
@@ -27,13 +38,25 @@ public class CondElement extends ThreeAdressElement{
      **/
     @Override
     public void addElement(ThreeAdressElement e) {
-        children.add(e);
+        if(e instanceof LeftCondElement)
+            leftCondElement = (LeftCondElement) e;
+        else if(e instanceof RightCondElement)
+            rightCondElement = (RightCondElement) e;
+
     }
 
     @Override
     public String toCpp() {
-        //return children.get(0).toCpp() + " == " + children.get(1).toCpp();
-        return "";
+        String s = "" ;
+        s += leftCondElement.toCpp() ;
+        if (rightCondElement.getChildren().size() > 0){
+            s += "==";
+            s += rightCondElement.toCpp() ;
+        }
+
+
+        return s;
+
     }
 
 

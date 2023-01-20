@@ -249,5 +249,25 @@ public class ThreeAdressesVisitor extends Visitor{
     }
 
 
+    public void VisitLeftCondDeclaration(LeftCondDeclaration leftD) {
+
+        ThreeAdressesManager.getInstance().addElement(new LeftAssignationElement());
+
+        visitTree(leftD);
+
+        ThreeAdressesManager.getInstance().back();
+    }
+
+  public void VisitRightCondDeclaration(RightCondDeclaration rightcond) {
+
+        ThreeAdressesManager.getInstance().addElement(new RightAssignationElement());
+
+        visitTree(rightcond);
+
+        ThreeAdressesManager.getInstance().back();
+
+
+  }
+
 
 }

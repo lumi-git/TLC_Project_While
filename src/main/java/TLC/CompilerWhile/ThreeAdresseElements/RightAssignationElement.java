@@ -1,9 +1,5 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
-/**
- * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
- * Based on the AST and the following method, it will generate the ThreeAdressCode of a RightAssignationElement
- */
 public class RightAssignationElement extends ThreeAdressElement{
 
 
@@ -38,6 +34,14 @@ public class RightAssignationElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        return null;
+        String s = "";
+
+        for (ThreeAdressElement e : children) {
+            if (children.get(children.size() - 1) != e)
+                s += "node(" + e.toCpp() + "), ";
+            else
+                s += "node(" + e.toCpp() + ")";
+        }
+        return s;
     }
 }

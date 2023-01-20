@@ -71,6 +71,13 @@ public class ForElement extends ThreeAdressElement{
 
     @Override
     public String toCpp() {
-        return null;
+        String s = "";
+        s += "for(" + variable + "){ \n";
+
+        for (ThreeAdressElement e : children)
+            s += e.Build();
+
+        s+= " \n";
+        return s;
     }
 }
