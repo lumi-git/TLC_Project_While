@@ -17,7 +17,7 @@ public class ElseElement extends ThreeAdressElement{
         String s = "";
 
         for (ThreeAdressElement e : children)
-            s += e.Build();
+            s += "  " + e.Build();
 
         return s;
     }

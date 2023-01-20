@@ -73,7 +73,7 @@ public class Stack {
       return "SYM_" + findSymbolInCurrentPath(name).getUniqueID();
     }
     else {
-      return "nil";
+      return "NULL";
     }
   }
 

@@ -40,7 +40,11 @@ public class ArgDeclarationElement extends ThreeAdressElement{
     public String toCpp(){
         String s = "";
         for (ThreeAdressElement e : children)
-            s += "stack.push(" + e.toCpp() +");\n";
+            if(children.get(children.size()-1) == e)
+                s += e.toCpp();
+            else
+                s += e.toCpp() + ", ";
+
 
         return s;
     }

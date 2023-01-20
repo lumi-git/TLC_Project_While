@@ -57,7 +57,7 @@ public class Function extends ThreeAdressElement {
     @Override
     public String toCpp() {
         String s = "\n";
-        s += "public void " + name + "( " + parameters.Build() +"){\n";
+        s += "public void " + name + "( " + parameters.toCpp() +"){\n";
 
         for (ThreeAdressElement e : children)
             s += e.toCpp();

@@ -1,9 +1,8 @@
 function foo :
 read X, Y
 %
-    Res1 := (cons X nil);
-    Res2 := (cons Y nil)
-
+    Res1 := (cons X Y);
+    Res2 := (cons Y X)
 %
 write Res1, Res2
 

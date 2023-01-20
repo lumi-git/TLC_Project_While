@@ -28,7 +28,7 @@ public class LeftCondElement extends ThreeAdressElement{
         String s ="" ;
 
         for (ThreeAdressElement tae : this.getChildren()) {
-            s += tae.Build() + " ";
+            s += tae.toCpp() + " ";
         }
 
         return s;

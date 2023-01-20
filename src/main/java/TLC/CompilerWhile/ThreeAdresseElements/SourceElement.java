@@ -28,6 +28,7 @@ public class SourceElement extends ThreeAdressElement{
     public void addElement(ThreeAdressElement e) {
         children.add(e);
     }
+
     /**
      * This method will generate the C++ code of the SourceElement
      * @return the C++ code of the SourceElement
@@ -35,7 +36,7 @@ public class SourceElement extends ThreeAdressElement{
     @Override
     public String toCpp() {
 
-        String s = "import des_trucs";
+        String s = "#include <stdlib.h> \n#include <stdio.h> \n";
 
         for (ThreeAdressElement e : children)
             s += e.toCpp();

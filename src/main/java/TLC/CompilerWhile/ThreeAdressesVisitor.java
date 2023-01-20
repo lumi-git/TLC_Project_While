@@ -251,7 +251,8 @@ public class ThreeAdressesVisitor extends Visitor{
 
     public void VisitLeftCondDeclaration(LeftCondDeclaration leftD) {
 
-        ThreeAdressesManager.getInstance().addElement(new LeftAssignationElement());
+
+        ThreeAdressesManager.getInstance().addElement(new LeftCondElement());
 
         visitTree(leftD);
 
@@ -260,7 +261,7 @@ public class ThreeAdressesVisitor extends Visitor{
 
   public void VisitRightCondDeclaration(RightCondDeclaration rightcond) {
 
-        ThreeAdressesManager.getInstance().addElement(new RightAssignationElement());
+        ThreeAdressesManager.getInstance().addElement(new RightCondElement());
 
         visitTree(rightcond);
 

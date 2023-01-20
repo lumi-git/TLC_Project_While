@@ -28,12 +28,18 @@ public class TlElement extends ThreeAdressElement{
     public void addElement(ThreeAdressElement e) {
         children.add(e);
     }
+
     /**
      * This method will generate the C++ code of the TlElement
      * @return the C++ code of the TlElement
      */
     @Override
     public String toCpp() {
-        return null;
+        String s = "getLeft(";
+        for (ThreeAdressElement tae : this.getChildren()) {
+            s += tae.toCpp()+" ";
+        }
+        s += ")";
+        return s;
     }
 }

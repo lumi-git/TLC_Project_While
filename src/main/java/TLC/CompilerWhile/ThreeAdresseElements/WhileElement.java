@@ -53,9 +53,7 @@ public class WhileElement extends ThreeAdressElement{
     public void addElement(ThreeAdressElement e) {
         if (recieve == 0){
             if(e instanceof CondElement){
-
                 Condition.setCondElement((CondElement) e);
-
                 recieve++;
             }
             else{

@@ -1,31 +1,33 @@
-import des_trucs
-public void not( SYM_1 ){
-if(){
-node SYM_2 = node(node nil);
+#include <stdlib.h> 
+#include <stdio.h> 
+
+public void not( SYM_1){
+if(SYM_1 ==SYM_1 ){
+node SYM_2 = node(NULL );
 }else{
-node SYM_2 = node(node NULL);
+node SYM_2 = node(NULL );
 }
 return SYM_2;
 } 
 
-public void stdlibtestADD( SYM_4 SYM_5 ){
-if(){
-node SYM_6 = node(node NULL);
+public void stdlibtestADD( SYM_4, SYM_5){
+if(SYM_4 ){
+node SYM_6 = node(NULL );
 }else{
-node SYM_6 = node(node NULL);
+node SYM_6 = node(NULL );
 }
 return SYM_6;
 } 
 
-public void foo( SYM_8 SYM_9 ){
-node SYM_10 = node(node SYM_8, NULL);
-node SYM_11 = node(node SYM_9, NULL);
+public void foo( SYM_8, SYM_9){
+node SYM_10 = node(SYM_8, SYM_9 );
+node SYM_11 = node(SYM_9, SYM_8 );
 return SYM_10, SYM_11;
 } 
 
 public void main( ){
-node SYM_13 = node(node NULL);
-node SYM_14 = node(node NULL);
-node SYM_13 = node(node foo(SYM_13, SYM_14));
+node SYM_13 = node(NULL );
+node SYM_14 = node(NULL );
+node SYM_13 = node(foo(SYM_13, SYM_14) );
 return SYM_13;
 } 

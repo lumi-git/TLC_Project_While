@@ -75,7 +75,7 @@ public class ForElement extends ThreeAdressElement{
         s += "for(" + variable + "){ \n";
 
         for (ThreeAdressElement e : children)
-            s += e.Build();
+            s += e.toCpp();
 
         s+= " \n";
         return s;
