@@ -4,7 +4,7 @@ import TLC.CompilerWhile.ThreeAdressesManager;
 import java.util.ArrayList;
 /**
  * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
- *  Based on the AST and the following method, it will generate the ThreeAdressCode of a If element
+ *  Based on the AST and the following method, it will generate the ThreeAdressCode of an If element
  **/
 public class IfElement extends ThreeAdressElement{
 
@@ -29,7 +29,7 @@ public class IfElement extends ThreeAdressElement{
     }
     /**
      * This method will Build the ThreeAdress code based on his label and the condition, then and else build
-     * @return the ThreeAdressCode of the goto
+     * @return the ThreeAdressCode of the if element
      **/
     public String Build() {
 
@@ -52,6 +52,11 @@ public class IfElement extends ThreeAdressElement{
 
     }
 
+    /**
+     * This method creates the condition of the if with CondElement
+     * It also creates the then and else of the if with ThenElement and ElseElement
+     * @param e a ThreeAdressElement which will be a CondElement, ThenElement or ElseElement
+     */
     public void addElement(ThreeAdressElement e) {
 
         if(e instanceof CondElement){
@@ -69,6 +74,10 @@ public class IfElement extends ThreeAdressElement{
         }
     }
 
+    /**
+     * this method is used to convert the ThreeAdressCode to C++
+     * @return the C++ code of the if element
+     */
     @Override
     public String toCpp() {
         return null;

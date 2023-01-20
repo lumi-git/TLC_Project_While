@@ -1,7 +1,10 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
 import TLC.CompilerWhile.ThreeAdressesManager;
-
+/**
+ * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
+ * Based on the AST and the following method, it will generate the ThreeAdressCode of a WhileElement
+ */
 public class WhileElement extends ThreeAdressElement{
 
     private CondElement cond;
@@ -25,7 +28,10 @@ public class WhileElement extends ThreeAdressElement{
 
 
     }
-
+    /**
+     * This method will Build the ThreeAdress code based on the WhiteLabel, the children build method and the Condition Build Method
+     * @return the ThreeAdressCode of the WhileElement
+     */
     @Override
     public String Build() {
         String s = "";
@@ -37,7 +43,12 @@ public class WhileElement extends ThreeAdressElement{
         s += Condition.Build();
         return s;
     }
-
+    /**
+     * This method adds children in the list of children which will be build later
+     * The method adds ThreeAdressElement until it sets an instance of CondElement if it receives one
+     * Then it adds the following ThreeAdressElement instance
+     * @param e a ThreeAdressElement
+     **/
     @Override
     public void addElement(ThreeAdressElement e) {
         if (recieve == 0){
