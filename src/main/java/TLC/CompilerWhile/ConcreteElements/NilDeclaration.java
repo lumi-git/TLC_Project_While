@@ -21,4 +21,5 @@ public class NilDeclaration extends TreeNode {
     public void accept(Visitor v) {
         v.VisitNilDeclaration(this);
     }
+
 }

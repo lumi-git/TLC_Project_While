@@ -31,7 +31,7 @@ public class NilElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        return "NULL";
+        return "new node()";
     }
 
 }

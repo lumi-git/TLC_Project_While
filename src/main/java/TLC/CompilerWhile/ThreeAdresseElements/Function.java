@@ -56,14 +56,39 @@ public class Function extends ThreeAdressElement {
 
     @Override
     public String toCpp() {
+        String params = "";
+        String def = "";
+        String addons = "";
+        String endPrint = "";
+
+        if(name.equals("main")){
+            params = "String[] args";
+            def = "public static void ";
+            addons = "map.put(\"NULL\",new node());\n";
+            //endPrint = "System.out.println(stack.pop().toInt());\n";
+        }
+        else{
+            params = parameters.toCpp();
+            def = "public static void ";
+        }
+
+
         String s = "\n";
-        s += "public void " + name + "( " + parameters.toCpp() +"){\n";
+        s += def + name + "( " + params +"){\n";
+
+        s+= addons;
+
+        for (ThreeAdressElement e : parameters.getChildren()){
+            s+= ((VarElement)e).toMap((VarElement)e)+";\n";
+        }
 
         for (ThreeAdressElement e : children)
             s += e.toCpp();
 
-        s+= "return "+ returnElement.toCpp() +";\n";
-        s += "} \n";
+        s+= returnElement.toCpp() +";\n";
+        s+= endPrint;
+        s += "}\n";
         return s;
+
     }
 }

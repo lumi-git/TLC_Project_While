@@ -1,5 +1,7 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
+import TLC.CompilerWhile.Stack;
+
 public class ConsElement extends ThreeAdressElement{
 
     public ConsElement(){
@@ -23,7 +25,36 @@ public class ConsElement extends ThreeAdressElement{
 
     @Override
     public String toCpp() {
+        String s = "";
+        String left = "";
+        String right = "";
 
-        return children.get(0).toCpp() + ", " + children.get(1).toCpp();
+
+
+        if (children.size() > 0){
+            ThreeAdressElement taeLeft = children.get(0);
+            if (taeLeft instanceof VarElement){
+                left = ((VarElement )taeLeft).fromMap();
+            }
+            else
+                left+=taeLeft.toCpp();
+
+        }
+
+        if(children.size() > 1 ){
+            ThreeAdressElement taeRight = children.get(1);
+            if (taeRight instanceof VarElement){
+                right = ((VarElement )taeRight).fromMap();
+            }
+            else
+                right+=taeRight.toCpp();
+            right = " , "+right;
+        }
+
+
+        s = "node.Cons("+left+right +")";
+
+        return s;
+
     }
 }

@@ -35,7 +35,29 @@ public class ListElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        return null;
+
+        String s = "node.newFromList(Arrays.asList(";
+
+        for (ThreeAdressElement e : getChildren()){
+            if(e == getChildren().get(getChildren().size()-1)){
+                if(e instanceof VarElement){
+                    s+= ((VarElement) e).fromMap();
+                }
+                else{
+                    s+= e.toCpp();
+                }
+            }
+            else {
+                if (e instanceof VarElement) {
+                    s += ((VarElement) e).fromMap() + ",";
+                } else {
+                    s += e.toCpp() + ", ";
+                }
+            }
+        }
+        s+= "))";
+
+        return s;
     }
 
 

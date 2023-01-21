@@ -1,9 +1,14 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
+import java.util.ArrayList;
+
 public class RightAssignationElement extends ThreeAdressElement{
 
 
     public RightAssignationElement() {}
+
+
+    public ArrayList<FuncCallElement> funcs = new ArrayList<>();
 
     /**
      * This method will Build the ThreeAdress code based on the children build method
@@ -26,7 +31,13 @@ public class RightAssignationElement extends ThreeAdressElement{
      */
     @Override
     public void addElement(ThreeAdressElement e) {
+
         children.add(e);
+
+        if(e instanceof FuncCallElement){
+            funcs.add((FuncCallElement)e);
+        }
+
     }
     /**
      * This method will generate the C++ code of the RightAssignationElement
@@ -38,10 +49,21 @@ public class RightAssignationElement extends ThreeAdressElement{
 
         for (ThreeAdressElement e : children) {
             if (children.get(children.size() - 1) != e)
-                s += "node(" + e.toCpp() + "), ";
+                s += "new node(" + e.toCpp() + "), ";
             else
-                s += "node(" + e.toCpp() + ")";
+                s += "new node(" + e.toCpp() + ")";
         }
         return s;
     }
+
+    public String[] toCppArray() {
+        String[] s = new String[children.size()];
+        int i = 0;
+        for (ThreeAdressElement e : children) {
+            s[i] = e.toCpp();
+            i++;
+        }
+        return s;
+    }
+
 }

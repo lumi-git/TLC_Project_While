@@ -25,12 +25,13 @@ tokens{
 	EXPCOND;
 	START;
 	APPFUNC;
+	RIGHTAFF;
+	LEFTAFF;
 	RIGHT;
 	LEFT;
-	RIGHTCOND;
-	LEFTCOND;
 	THEN;
 	NIL;
+	PP;
 }
 
 WS  :   ( ' '
@@ -61,28 +62,32 @@ outputSub:	t1=variable (',' t2=outputSub)? -> $t1 $t2?;
 commands:	t1=command(';' t2=commands) ? -> $t1 $t2?;
 
 command	:	'nop'|
-		(t1=vars ':=' t2=exprs)->^(AFF ^(LEFT $t1) ^(RIGHT $t2))|
-		('if' t3=expression 'then' t4=commands ('else' t5=commands) 'fi')->^(IF  ^(EXPCOND $t3) ^(THEN $t4) ^(ELSE $t5)?) |
-		('while' t6=expression 'do' t7=commands 'od') -> ^(WHILE ^(EXPCOND $t6) $t7)|
-		('for' t8=expression 'do' t9=commands 'od') -> ^(FOR $t8 $t9)|
-		('foreach' t10=variable 'in' t11=expression 'do' t12=commands 'od')-> ^(FOREACH $t10 $t11 $t12);
+		(t1=vars ':=' t2=exprs)->^(AFF ^(LEFTAFF $t1) ^(RIGHTAFF $t2))|
+		('if' t3=condition 'then' t4=commands ('else' t5=commands) 'fi')->^(IF  ^(EXPCOND $t3) ^(THEN $t4) ^(ELSE $t5)?) |
+		('while' t6=condition 'do' t7=commands 'od') -> ^(WHILE ^(EXPCOND $t6) $t7)|
+		('for' t8=conditionSimple 'do' t9=commands 'od') -> ^(FOR $t8 $t9)|
+		('foreach' t10=variable 'in' t11=expression 'do' t12=commands 'od')-> ^(FOREACH $t10 $t11 $t12)|
+		('pp(' expression ')'-> ^(PP expression));
 		
 vars	:	t1=variable (',' t2=vars) ? -> $t1 $t2?;
-exprs	:	expression (',' exprs)?;
+exprs	:	expression (',' exprs)? -> expression exprs?;
 
 exprBase:	Nil->^(NIL)|
-		'(''cons'')'-> ^(CONS)|
-		'(''list'')'-> ^(LIST)|
 		variable|
 		Symbol|
 		'(' 'cons' lexpr ')'-> ^(CONS lexpr)|
 		'(' 'list' t2=lexpr ')'-> ^(LIST $t2)|
-		'(' 'hd' t3=exprBase ')'-> HD $t3|
-		'(' 'tl' t4=exprBase ')'-> TL $t4|
-		'(' t5=Symbol variable+ ')'->^(APPFUNC $t5 variable+);
+		'(' 'hd' t3=exprBase ')'-> ^(HD $t3)|
+		'(' 'tl' t4=exprBase ')'-> ^(TL $t4)|
+		'(' t5=Symbol exprBase+ ')'->^(APPFUNC $t5 exprBase+);
 		
-expression
-	:	exprBase('=?' exprBase)? -> ^(LEFTCOND exprBase) ^(RIGHTCOND exprBase)?;
+expression 
+	:	exprBase;
+
+conditionSimple
+	:	exprBase;
+condition 
+	:	exprBase ('=?' exprBase)? -> ^(LEFT exprBase) ^(RIGHT exprBase)?;
 	
 lexpr	:	exprBase*->exprBase*;
 variable:	t1=Variable -> ^(VARS $t1);

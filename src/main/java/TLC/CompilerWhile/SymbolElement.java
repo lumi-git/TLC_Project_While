@@ -10,15 +10,16 @@ public class SymbolElement {
   int column;
 
   int paramCount;
+  int returnCount;
 
-  public SymbolElement(String name, String kind, String type, int line, int column,int paramCount) {
+  public SymbolElement(String name, String kind, String type, int line, int column,int paramCount,int returnCount) {
     this.name = name;
     this.kind = kind;
     this.type = type;
     this.line = line;
     this.column = column;
     this.paramCount =paramCount ;
-
+    this.returnCount = returnCount;
     this.UniqueID = Stack.getInstance().getUniqueID()+"";
 
 
@@ -44,6 +45,10 @@ public class SymbolElement {
     return UniqueID;
   }
 
+  public int getReturnCount(){
+    return returnCount;
+  }
+
 
   public String getkind() {
     return kind;
@@ -62,7 +67,7 @@ public class SymbolElement {
   }
 
   public String ToMD() {
-    return "->   " + name + " , " + type + " , " + kind + " , " + paramCount + " , UniqueID: "+getUniqueID()+"\n";
+    return "->   " + name + " , " + type + " , " + kind + " , " + paramCount +" , "+ returnCount + " , UniqueID: "+getUniqueID()+"\n";
 
   }
 

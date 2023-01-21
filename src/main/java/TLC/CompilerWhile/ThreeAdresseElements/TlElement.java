@@ -35,11 +35,12 @@ public class TlElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        String s = "getLeft(";
-        for (ThreeAdressElement tae : this.getChildren()) {
+
+        String s = "(";
+        for (ThreeAdressElement tae : children) {
             s += tae.toCpp()+" ";
         }
-        s += ")";
+        s += ").getTail()";
         return s;
     }
 }

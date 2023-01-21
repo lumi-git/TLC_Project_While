@@ -28,7 +28,22 @@ public class VarElement extends ThreeAdressElement{
          */
         @Override
         public String toCpp() {
+                return "\""+variable+"\"";
+        }
+
+        public String raw(){
                 return variable;
         }
+
+        public String fromMap(){
+
+                return "map.get("+"\""+variable+"\""+")";
+
+        }
+
+        public String toMap(VarElement var2){
+                return "map.put("+"\""+variable+"\""+","+var2.raw()+")";
+        }
+
 
 }

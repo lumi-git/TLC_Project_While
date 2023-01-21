@@ -1,12 +1,7 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
 
-/**
- * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
- * Based on the AST and the following method, it will generate the ThreeAdressCode of a ReturnElement
- */
-public class ReturnElement extends ThreeAdressElement {
-
-    public ReturnElement() {
+public class PpElement extends ThreeAdressElement{
+    public PpElement() {
         super();
     }
 
@@ -17,9 +12,10 @@ public class ReturnElement extends ThreeAdressElement {
      */
     @Override
     public String Build() {
-        String s = "";
+        String s = "PRINT ";
         for (ThreeAdressElement e : children)
             s += e.Build() + " ";
+
         return s;
     }
 
@@ -39,19 +35,26 @@ public class ReturnElement extends ThreeAdressElement {
      *
      * @return the C++ code of the ReturnElement
      */
+
     @Override
     public String toCpp() {
-        String s = "";
-        for (ThreeAdressElement e : children) {
-            if (children.get(children.size() - 1) == e) {
-                s += "stack.push(" + " map.get( "+e.toCpp() + " ))";
-            } else {
-                s += "stack.push(" + " map.get(  "+e.toCpp() + " ));";
-            }
 
+        ThreeAdressElement e = children.get(0);
+
+
+
+        String s = "Logger.log(";
+
+        if(e instanceof VarElement){
+            s+= ((VarElement)e).fromMap() +"+\"\"";
         }
+        else{
+            s+= e.toCpp()+"+\"\"";
+        }
+
+
+        s+= ");\n";
 
         return s;
     }
-
 }

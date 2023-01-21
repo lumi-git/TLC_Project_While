@@ -1,17 +1,19 @@
 function foo :
 read X, Y
 %
+    Result := nil;
     Res1 := (cons X Y);
     Res2 := (cons Y X)
 %
-write Res1, Res2
+write Res1,Res2
 
 function main :
 read
 %
-    Result := nil;
-    Test := nil;
-    Result := (foo Result Test)
+    Result,Test := nil,nil;
+    Ret1,Ret2 := (foo Result Test);
 
 %
 write Result
+
+

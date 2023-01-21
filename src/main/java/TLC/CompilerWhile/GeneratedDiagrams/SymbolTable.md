@@ -5,13 +5,13 @@ class ID0_START_0{
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   not , tree , func , 1 , UniqueID: 0
+   ->   not , tree , func , 1 , 1 , UniqueID: 0
 
-   ->   stdlibtestADD , tree , func , 2 , UniqueID: 3
+   ->   stdlibtestADD , tree , func , 2 , 1 , UniqueID: 3
 
-   ->   foo , tree , func , 2 , UniqueID: 7
+   ->   addArbres , tree , func , 2 , 1 , UniqueID: 7
 
-   ->   main , tree , func , 0 , UniqueID: 12
+   ->   main , tree , func , 0 , 1 , UniqueID: 11
 
 }
 
@@ -20,9 +20,9 @@ class ID1_FUNC_0{
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   Arg1 , tree , var , 0 , UniqueID: 1
+   ->   Arg1 , tree , var , 0 , 1 , UniqueID: 1
 
-   ->   Result , tree , var , 0 , UniqueID: 2
+   ->   Result , tree , var , 0 , 1 , UniqueID: 2
 
 }
 
@@ -31,26 +31,24 @@ class ID2_FUNC_1{
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   Arg1 , tree , var , 0 , UniqueID: 4
+   ->   Arg1 , tree , var , 0 , 1 , UniqueID: 4
 
-   ->   Arg2 , tree , var , 0 , UniqueID: 5
+   ->   Arg2 , tree , var , 0 , 1 , UniqueID: 5
 
-   ->   Result , tree , var , 0 , UniqueID: 6
+   ->   Result , tree , var , 0 , 1 , UniqueID: 6
 
 }
 
 class ID3_FUNC_2{
-   Name : foo
+   Name : addArbres
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   X , tree , var , 0 , UniqueID: 8
+   ->   A1 , tree , var , 0 , 1 , UniqueID: 8
 
-   ->   Y , tree , var , 0 , UniqueID: 9
+   ->   A2 , tree , var , 0 , 1 , UniqueID: 9
 
-   ->   Res1 , tree , var , 0 , UniqueID: 10
-
-   ->   Res2 , tree , var , 0 , UniqueID: 11
+   ->   Ret1 , tree , var , 0 , 1 , UniqueID: 10
 
 }
 
@@ -59,9 +57,11 @@ class ID4_FUNC_3{
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   Result , tree , var , 0 , UniqueID: 13
+   ->   C , tree , var , 0 , 1 , UniqueID: 12
 
-   ->   Test , tree , var , 0 , UniqueID: 14
+   ->   Test , tree , var , 0 , 1 , UniqueID: 13
+
+   ->   Ret1 , tree , var , 0 , 1 , UniqueID: 14
 
 }
 

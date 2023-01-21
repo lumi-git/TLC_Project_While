@@ -28,7 +28,7 @@ public class SymbolTableVisitor extends Visitor {
 
     Stack.getInstance()
         .addSymbol(new SymbolElement(f.getName(), "func", "tree", f.getLine(), f.getColumn(),
-            f.getArgs().size()));
+            f.getArgs().size(),f.getReturns().size()));
 
     Stack.getInstance().addBlock("FUNC", f.getName());
     visitTree(f);
@@ -41,7 +41,7 @@ public class SymbolTableVisitor extends Visitor {
     for (CommonTree ct : (ArrayList<CommonTree>) aff.getLeft().getChildren()){
       Stack.getInstance().addTracedSymbol(
               new SymbolElement(ct.getChild(0).toString(), "var", "tree", aff.getLine(),
-                      aff.getColumn(),0));
+                      aff.getColumn(),0,1));
 
     }
 
@@ -64,7 +64,7 @@ public class SymbolTableVisitor extends Visitor {
     for (CommonTree t : argD.getArgs()) {
       //if the var is not already declared in the path, we declare it in this block
         Stack.getInstance().addTracedSymbol(
-            new SymbolElement(t.getText(), "var", "tree", argD.getLine(), argD.getColumn(),0));
+            new SymbolElement(t.getText(), "var", "tree", argD.getLine(), argD.getColumn(),0,1));
 
     }
     visitTree(argD);
@@ -100,7 +100,7 @@ public class SymbolTableVisitor extends Visitor {
 
     Stack.getInstance().addSymbol(
         new SymbolElement(foreachD.getVar().toString(), "var", "tree", foreachD.getLine(),
-            foreachD.getColumn(),0));
+            foreachD.getColumn(),0,1));
     Stack.getInstance().back();
 
     visitTree(foreachD);

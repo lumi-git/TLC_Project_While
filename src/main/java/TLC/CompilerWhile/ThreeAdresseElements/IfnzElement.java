@@ -4,7 +4,7 @@ import TLC.CompilerWhile.ThreeAdressesManager;
 
 import java.util.ArrayList;
 
-public class IfnzElement extends ThreeAdressElement{
+public class IfnzElement extends ThreeAdressElement {
 
     private CondElement condition;
 
@@ -22,10 +22,15 @@ public class IfnzElement extends ThreeAdressElement{
 
     private ArrayList<ThreeAdressElement> Then = new ArrayList<ThreeAdressElement>();
 
-    public IfnzElement(boolean hasElse_){
+    public IfnzElement(boolean hasElse_) {
         uniquID = ThreeAdressesManager.getInstance().getUniqLabelID();
         hasElse = hasElse_;
         then = true;
+    }
+
+    public CondElement getCondElement() {
+        return condition;
+
     }
 
     public void setCondElement(CondElement cond) {
@@ -47,22 +52,21 @@ public class IfnzElement extends ThreeAdressElement{
 
         s += "goto " + labelEnd + (uniquID) + " :\n";
 
-            s += labelFalse+(uniquID)+":\n";
-            for (ThreeAdressElement e : Then)
-                s += e.Build();
+        s += labelFalse + (uniquID) + ":\n";
+        for (ThreeAdressElement e : Then)
+            s += e.Build();
 
-        s+= labelEnd+(uniquID)+" :\n";
+        s += labelEnd + (uniquID) + " :\n";
 
         return s;
     }
 
     public void addElement(ThreeAdressElement e) {
-        if(e instanceof CondElement){
+        if (e instanceof CondElement) {
             CondElement cond = (CondElement) e;
             condition = cond;
-        }
-        else{
-            if(then)
+        } else {
+            if (then)
                 Else.add(e);
             else
                 Then.add(e);

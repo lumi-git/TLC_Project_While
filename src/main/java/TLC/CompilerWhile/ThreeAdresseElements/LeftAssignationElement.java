@@ -1,4 +1,7 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
+
+import java.util.ArrayList;
+
 /**
  * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
  *  Based on the AST and the following method, it will generate the ThreeAdressCode of a LeftAssignationElement
@@ -22,6 +25,7 @@ public class LeftAssignationElement extends ThreeAdressElement {
             s += e.Build() + " ";
         return s;
     }
+
     /**
      * This method will add a child in the list of children which will be build later
      * @param e the threeAdressElement to add
@@ -29,6 +33,7 @@ public class LeftAssignationElement extends ThreeAdressElement {
     @Override
     public void addElement(ThreeAdressElement e) {
         children.add(e);
+
     }
 
     /**
@@ -37,13 +42,23 @@ public class LeftAssignationElement extends ThreeAdressElement {
      */
     @Override
     public String toCpp() {
-        String s = "node ";
+        String s = "";
 
         for (ThreeAdressElement e : children) {
             if (children.get(children.size() - 1) != e)
                 s += e.toCpp() + ", ";
             else
                 s += e.toCpp();
+        }
+        return s;
+    }
+
+    public String[] toCppArray() {
+        String[] s = new String[children.size()];
+        int i = 0;
+        for (ThreeAdressElement e : children) {
+            s[i] = e.toCpp();
+            i++;
         }
         return s;
     }

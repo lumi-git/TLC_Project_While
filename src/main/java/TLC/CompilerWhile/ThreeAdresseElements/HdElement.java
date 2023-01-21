@@ -37,11 +37,11 @@ public class HdElement extends ThreeAdressElement{
      */
     @Override
     public String toCpp() {
-        String s = "getRight( ";
+        String s = "node.getRight( ";
         for (ThreeAdressElement tae : this.getChildren()) {
             s += tae.toCpp()+" ";
         }
-        s += ")";
+        s += ").getHead()";
 
         return s;
     }

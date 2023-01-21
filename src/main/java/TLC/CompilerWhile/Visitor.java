@@ -162,12 +162,12 @@ public class Visitor {
         appF.accept(this);
       }
 
-      case WhileParser.LEFT -> {
+      case WhileParser.LEFTAFF -> {
         LeftDefinition left = new LeftDefinition((CommonTree) ct);
         left.accept(this);
       }
 
-        case WhileParser.RIGHT -> {
+        case WhileParser.RIGHTAFF -> {
           RightDefinition right = new RightDefinition((CommonTree) ct);
             right.accept(this);
         }
@@ -199,15 +199,19 @@ public class Visitor {
           tail.accept(this);
         }
 
-      case WhileParser.RIGHTCOND -> {
+      case WhileParser.RIGHT -> {
         RightCondDeclaration rightcond = new RightCondDeclaration((CommonTree) ct);
         rightcond.accept(this);
       }
 
-      case WhileParser.LEFTCOND -> {
+      case WhileParser.LEFT -> {
         LeftCondDeclaration leftcond = new LeftCondDeclaration((CommonTree) ct);
         leftcond.accept(this);
+      }
 
+      case WhileParser.PP -> {
+        PpDeclaration pp = new PpDeclaration((CommonTree) ct);
+        pp.accept(this);
 
       }
 
@@ -243,7 +247,6 @@ public class Visitor {
    *
    * @param left left side of the affectation
    */
-
   public void VisitLeftDeclaration(LeftDefinition left) {
 
   }
@@ -263,7 +266,6 @@ public class Visitor {
   public void VisitRightDeclaration(RightDefinition right) {
 
   }
-
 
   public void VisitTypeDeclaration(typeDeclaration t) {
 
@@ -367,6 +369,10 @@ public class Visitor {
      * @param ElsD the else declaration of a if statement
      */
   public void visitElseDeclaration(ElseDeclaration ElsD) {
+
+  }
+
+  public void VisitPpDeclaration(PpDeclaration pp){
 
   }
 

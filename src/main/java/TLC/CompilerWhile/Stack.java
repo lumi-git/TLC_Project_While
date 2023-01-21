@@ -167,7 +167,7 @@ public class Stack {
         return s;
       }
     }
-    return new SymbolElement("NIL","NIL","var",0,0,0);
+    return new SymbolElement("NIL","NIL","var",0,0,0,0);
   }
 
   public SymbolElement findSymbolInCurrentBlock(String name){
@@ -179,7 +179,7 @@ public class Stack {
     if(currentBlock != null){
       return currentBlock.findSymbolInParent(name);
     }
-    return new SymbolElement("NIL","NIL","var",0,0,0);
+    return new SymbolElement("NIL","NIL","var",0,0,0,0);
   }
 
 }

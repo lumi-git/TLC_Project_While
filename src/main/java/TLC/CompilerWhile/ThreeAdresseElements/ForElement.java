@@ -7,12 +7,12 @@ import TLC.CompilerWhile.ThreeAdressesManager;
  **/
 public class ForElement extends ThreeAdressElement{
 
-        private VarElement variable;
+        private ThreeAdressElement loop;
         int recieve = 0;
 
         private String ForLabel = "FOR_";
 
-        private IfnzElement Condition;
+        private IfnzElement Condition ;
 
         private int uniquID;
 
@@ -50,11 +50,14 @@ public class ForElement extends ThreeAdressElement{
      **/
     @Override
     public void addElement(ThreeAdressElement e) {
+
         if (recieve == 0){
-            if(e instanceof VarElement){
+            if(e instanceof VarElement || e instanceof ConsElement ){
+
+                loop = e;
                 CondElement cond =new CondElement();
 
-                cond.addElement((VarElement) e);
+                cond.addElement( e);
 
                 Condition.setCondElement(cond);
 
@@ -72,12 +75,21 @@ public class ForElement extends ThreeAdressElement{
     @Override
     public String toCpp() {
         String s = "";
-        s += "for(" + variable + "){ \n";
+        String var = "";
+
+        if (loop instanceof VarElement){
+            var = ((VarElement)loop).fromMap();
+        }
+        else{
+            var = loop.toCpp();
+        }
+        String loopvar = "i_" + ThreeAdressesManager.getInstance().getUniqLoopID();
+        s += "for( int "+loopvar+" =0; "+loopvar+"<" + var + ".toInt();"+loopvar+"++){ \n";
 
         for (ThreeAdressElement e : children)
             s += e.toCpp();
 
-        s+= " \n";
+        s+= "}\n";
         return s;
     }
 }

@@ -17,6 +17,7 @@ public class WhileElement extends ThreeAdressElement{
     private int uniquID;
 
     public WhileElement() {
+        super();
 
         uniquID = ThreeAdressesManager.getInstance().getUniqLabelID();
 
@@ -66,7 +67,19 @@ public class WhileElement extends ThreeAdressElement{
     }
 
     @Override
+    public void setBefor(String befor) {
+        Befor = befor;
+    }
+
+    @Override
     public String toCpp() {
-        return null;
+        String s = Befor;
+        s += "while(" + Condition.getCondElement().toCpp() + "){\n";
+
+        for (ThreeAdressElement e : children)
+            s += e.toCpp();
+
+        s += "}\n";
+        return s;
     }
 }

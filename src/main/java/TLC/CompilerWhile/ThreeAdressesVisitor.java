@@ -156,6 +156,15 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  public void VisitPpDeclaration(PpDeclaration pp ){
+
+    ThreeAdressesManager.getInstance().addElement(new PpElement());
+
+    visitTree(pp);
+
+    ThreeAdressesManager.getInstance().back();
+  }
+
 
   /**
    * This method will add the conditional element, visit the conditional, and go back to the parent of the conditional in the tree

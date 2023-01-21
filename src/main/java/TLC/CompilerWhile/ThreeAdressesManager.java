@@ -23,6 +23,9 @@ public class ThreeAdressesManager {
      * This method will return the instance of the three adress manager
      * @return the instance of the three adress manager
      */
+
+    int loopID = 0;
+
     public static ThreeAdressesManager getInstance() {
         if (instance == null) {
             instance = new ThreeAdressesManager();
@@ -62,6 +65,12 @@ public class ThreeAdressesManager {
         return labelIDs;
     }
 
+    public int getUniqLoopID(){
+        loopID +=1;
+        return loopID;
+
+    }
+
     /**
      * This method will build the current element into a ThreeAdressCode string
      * @return the ThreeAdressCode of the current element
@@ -83,7 +92,7 @@ public class ThreeAdressesManager {
      */
     public void printToFileCPP(){
         try {
-            FileWriter myWriter = new FileWriter("src/main/java/TLC/CompilerWhile/CPPOUT/programmcpp.txt");
+            FileWriter myWriter = new FileWriter("src/main/java/TLC/CompilerWhile/CPPOUT/main.java");
 
             String programString = ToCpp();
             myWriter.write(programString);

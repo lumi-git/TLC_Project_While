@@ -11,6 +11,18 @@ public abstract class ThreeAdressElement {
     ThreeAdressElement parent;
     ArrayList<ThreeAdressElement> children;
 
+    String Befor ="";
+    String After = "";
+
+    public void setBefor(String befor){
+        Befor = befor;
+    }
+    public void setAfter(String after){
+        After = after;
+
+    }
+
+
     public ThreeAdressElement() {
         children = new ArrayList<ThreeAdressElement>();
     }

@@ -18,7 +18,6 @@ public class IfElement extends ThreeAdressElement{
 
     private String labelTrue = "True_label_";
 
-
     private ElseElement Else = null;
 
     private ThenElement Then = null;
@@ -27,6 +26,7 @@ public class IfElement extends ThreeAdressElement{
         uniquID = ThreeAdressesManager.getInstance().getUniqLabelID();
         hasElse = hasElse_;
     }
+
     /**
      * This method will Build the ThreeAdress code based on his label and the condition, then and else build
      * @return the ThreeAdressCode of the if element
@@ -36,8 +36,8 @@ public class IfElement extends ThreeAdressElement{
         String s = "";
         s += "ifz " + condition.Build() + " goto " + labelTrue + (uniquID) + "\n";
 
-
-        s += Else.Build();
+        if(hasElse)
+            s += Else.Build();
 
         s += "goto " + labelEnd + (uniquID) + " :\n";
 
@@ -84,7 +84,8 @@ public class IfElement extends ThreeAdressElement{
         s += "if(" + condition.toCpp() + "){\n";
         s += Then.toCpp();
         s += "}else{\n";
-        s += Else.toCpp();
+        if(Else != null)
+            s += Else.toCpp();
         s += "}\n";
         return s;
     }
