@@ -6,8 +6,10 @@ import org.antlr.runtime.tree.CommonTree;
 
 import java.util.ArrayList;
 
+/**
+ * This class is used to represent the token AppFunc found in the AST
+ */
 public class AppFunc extends TreeNode {
-
 
   String name;
 
@@ -31,20 +33,35 @@ public class AppFunc extends TreeNode {
     ArgCount = astNode.getChildren().size()-1;
 
   }
-
+  /**
+   * This method will call the methode corresponding to a function call depending on the visitor
+   * @param v the visitor
+   */
   @Override
   public void accept(Visitor v) {
     v.visitAppFunc(this);
   }
 
+  /**
+   * This method will return the name of the function
+   * @return the name of the function
+   */
     public String getName() {
         return name;
     }
 
+  /**
+   * This method will return the number of arguments of the function
+   * @return the number of arguments of the function
+   */
     public int getArgCount() {
         return ArgCount;
     }
 
+  /**
+   * This method will return the arguments of the function
+   * @return the arguments of the function
+   */
     public ArrayList<String> getArgs(){
       return args;
     }
