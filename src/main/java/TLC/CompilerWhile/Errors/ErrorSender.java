@@ -1,5 +1,8 @@
 package TLC.CompilerWhile.Errors;
 
+/**
+ * This class is used to print the message of the error in red and exit the program
+ */
 public class ErrorSender {
 
   public static void sendError(ErrorG error,boolean exit){

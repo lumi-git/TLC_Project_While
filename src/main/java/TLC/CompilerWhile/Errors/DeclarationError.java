@@ -1,5 +1,7 @@
 package TLC.CompilerWhile.Errors;
-
+/**
+ * This class is used to represent a declaration error found in the AST
+ */
 public class DeclarationError extends WhileError {
 
   private String m_name;
@@ -9,6 +11,10 @@ public class DeclarationError extends WhileError {
     m_name = name;
   }
 
+  /**
+   * This method will return the name of the variable already declared
+   * @return the name of the variable already declared
+   */
   public String getName() {
     return m_name;
   }

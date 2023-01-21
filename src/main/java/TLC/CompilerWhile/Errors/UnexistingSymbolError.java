@@ -1,5 +1,8 @@
 package TLC.CompilerWhile.Errors;
 
+/**
+ * This class is used to represent an error of a symbol, which has not been declared, found in the AST
+ */
 public class UnexistingSymbolError extends WhileError{
 
     private String m_name;
@@ -10,6 +13,10 @@ public class UnexistingSymbolError extends WhileError{
         m_name = name;
     }
 
+    /**
+     * This method will return the name of the symbol, which has not been declared
+     * @return the name of the symbol, which has not been declared
+     */
     public String getName() {
         return m_name;
     }

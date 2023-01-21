@@ -3,6 +3,9 @@ package TLC.CompilerWhile.Errors;
 import TLC.CompilerWhile.Stack;
 import TLC.CompilerWhile.SymbolElement;
 
+/**
+ * This class is used to represent an insufficient argument count error found in the AST
+ */
 public class InsufisantArgCountError extends WhileError {
 
 
@@ -21,8 +24,10 @@ public class InsufisantArgCountError extends WhileError {
 
     }
 
-
-
+    /**
+     * This method will return the name of the function, which lack in arguments
+     * @return the name of the function, which lack in arguments
+     */
     public String getName() {
         return m_name;
     }
