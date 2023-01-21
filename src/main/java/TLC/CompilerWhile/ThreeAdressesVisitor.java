@@ -5,6 +5,9 @@ import TLC.CompilerWhile.ConcreteElements.IfDeclaration;
 import TLC.CompilerWhile.ThreeAdresseElements.*;
 import org.antlr.runtime.tree.CommonTree;
 
+/**
+ * This class is a ThreeAdressCode version of the visitor pattern, it will help generate the ThreeAdressCode
+ */
 public class ThreeAdressesVisitor extends Visitor{
 
   public ThreeAdressesVisitor(CommonTree tree) {
@@ -15,6 +18,10 @@ public class ThreeAdressesVisitor extends Visitor{
     visitTree(t);
   }
 
+  /**
+   * This method will add the function, visit the function, and go back to the parent of the function in the tree
+   * @param f the function
+   */
   public void VisitFunc(Func f) {
 
     Stack.getInstance().next();
@@ -29,6 +36,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add the affectation, visit the affectation, and go back to the parent of the affectation in the tree
+   * @param aff the affectation object
+   */
   public void VisitAffectation(Affectation aff) {
 
     //declare a new affecation
@@ -42,10 +53,18 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will visit the function body
+   * @param def the function body
+   */
   public void VisitFunctionBody(FunctionBody def) {
     visitTree(def);
   }
 
+  /**
+   * This method will add the argument declaration, visit the argument declaration, and go back to the parent of the argument declaration in the tree
+   * @param argD the arguments declaration of a function
+   */
   public void visitArgDeclaration(ArgDeclaration argD) {
 
     ArgDeclarationElement argDeclarationElement = new ArgDeclarationElement();
@@ -58,6 +77,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add a new return element, visit the for declaration, and go back to the parent of the argument return in the tree
+   * @param argR the return arguments of a function
+   */
   public void visitArgReturn(ArgReturn argR) {
 
     ReturnElement returnElement = new ReturnElement();
@@ -70,6 +93,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add a new for element, visit the for declaration, and go back to the parent of the for declaration in the tree
+   * @param forD the for declaration
+   */
   public void visitForDeclaration(ForDeclaration forD) {
 
 
@@ -81,6 +108,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add a new while element, visit the while declaration, and go back to the parent of the while declaration in the tree
+   * @param whileD the while declaration
+   */
   public void visitWhileDeclaration(WhileDeclaration whileD) {
     ThreeAdressesManager.getInstance().addElement(new WhileElement());
 
@@ -90,6 +121,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add a new ForEach element, visit the ForEach declaration, and go back to the parent of the ForEach declaration in the tree
+   * @param foreachD the foreach declaration
+   */
   public void visitForeachDeclaration(ForeachDeclaration foreachD) {
 
     Stack.getInstance().next();
@@ -105,6 +140,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add the call to a function, visit the call to a function, and go back to the parent of the call to a function in the tree
+   * @param appF the call to a function
+   */
   public void visitAppFunc(AppFunc appF) {
 
     FuncCallElement funcCallElement = new FuncCallElement(appF.getName());
@@ -118,7 +157,10 @@ public class ThreeAdressesVisitor extends Visitor{
   }
 
 
-
+  /**
+   * This method will add the conditional element, visit the conditional, and go back to the parent of the conditional in the tree
+   * @param expC a conditional statement
+   */
   public void visitExpCond(ExpCond expC) {
 
     ThreeAdressesManager.getInstance().addElement(new CondElement());
@@ -128,6 +170,10 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
+  /**
+   * This method will visit the program declaration
+   * @param progD the program declaration
+   */
   public void visitProgrammDeclaration(ProgrammDeclaration progD) {
 
     visitTree(progD);

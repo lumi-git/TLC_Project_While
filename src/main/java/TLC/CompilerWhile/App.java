@@ -15,12 +15,10 @@ import org.antlr.runtime.tree.CommonTree;
 import java.io.File;
 
 /**
- * @Description : This class is the principle class of the compiler,
- * it's responsible to recover the main file of source code.
+ * This class is the principle class of the compiler,
+ * it is responsible to recover the main file of source code.
  * With help of a parser and a lexer, this class will create a tree representative of the source code.
- *
  * Then with the use of a visitor pattern, we will verify the code and convert it to a new language.
- *
  */
 
 public class App {
@@ -65,7 +63,6 @@ public class App {
 
 
 
-
       try {
 
         //the common tree is a representation of the AST
@@ -83,8 +80,6 @@ public class App {
         //creating a visitor to convert the verified code to a new simpler language
         ThreeAdressesVisitor threeAdressesVisitor = new ThreeAdressesVisitor(ct);
 
-
-
         symbolTableVisitor.parse();
 
         //printerVisitor.parse();
@@ -97,11 +92,6 @@ public class App {
         System.out.println(ThreeAdressesManager.getInstance().Build());
 
         ThreeAdressesManager.getInstance().printToFileCPP();
-
-
-
-
-
 
       } catch (Exception e) {
         System.out.println(e.getMessage());
@@ -116,7 +106,11 @@ public class App {
     System.out.println(s);
   }
 
-
+  /**
+   * This method is used to read a file as a string and detect error in it using the ErrorSender class
+   * @param fileName the name of the file we want to read
+   * @return the content of the file as a string
+   */
   public static String readFileAsString(String fileName) {
     String data = "";
 
