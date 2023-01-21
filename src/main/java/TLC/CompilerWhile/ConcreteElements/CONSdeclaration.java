@@ -16,7 +16,7 @@ public class CONSdeclaration extends TreeNode {
   }
 
   /**
-   * This method will call the methode corresponding to a constant declaration depending on the visitor
+   * This method will call the methode corresponding to a cons declaration depending on the visitor
    * @param v the visitor
    */
   @Override

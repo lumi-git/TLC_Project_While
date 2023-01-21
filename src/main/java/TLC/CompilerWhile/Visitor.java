@@ -406,8 +406,8 @@ public class Visitor {
 
 
   /**
-   *
-   * @param tn
+   * This method will visit the tree recursively until the node is a leaf
+   * @param tn the tree node to visit
    */
   public void visitTree(TreeNode tn) {
     if (tn.getNode().getChildren() != null) {

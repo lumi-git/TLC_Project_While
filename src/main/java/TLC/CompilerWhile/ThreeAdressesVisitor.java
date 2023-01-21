@@ -180,6 +180,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add the if element with the condition, visit the rest of it, and go back to the parent of the if declaration in the tree
+   * @param condIF the if declaration
+   */
   public void visitConditionIF(IfDeclaration condIF) {
 
     IfElement ifz = new IfElement(condIF.hasElse());
@@ -192,12 +196,19 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
-
+  /**
+   * This method will continue the visit of the symbol declaration
+   * @param symD the symbol declaration
+   */
   public void visitSymDeclaration(symbolDeclaration symD) {
 
     visitTree(symD);
   }
 
+  /**
+   * This method will add the cons element, visit the rest of it and go back to the parent of the cons declaration in the tree
+   * @param consD the cons declaration
+   */
   public void visitCons(CONSdeclaration consD) {
 
     ThreeAdressesManager.getInstance().addElement(new ConsElement());
@@ -208,6 +219,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
+  /**
+   * This method will add the variable element, visit the rest of it and go back to the parent of the variable declaration in the tree
+   * @param varD the var declaration
+   */
   public void visitVarDeclaration(varDeclaration varD) {
 
     String var = Stack.getInstance().getAdressOfSymbol( varD.getName());
@@ -219,7 +234,10 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
-
+  /**
+   * This method will add the else declaration, visit the rest of it and go back to the parent of the else declaration in the tree
+   * @param elseD the else declaration
+   */
   public void visitElseDeclaration(ElseDeclaration elseD) {
 
     ThreeAdressesManager.getInstance().addElement(new ElseElement());
@@ -229,6 +247,10 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
+  /**
+   * This method will add the then element, visit the rest of it and go back to the parent of the then declaration in the tree
+   * @param then the then definition
+   */
   public void VisitThenDeclaration(ThenDefinition then) {
 
     ThreeAdressesManager.getInstance().addElement(new ThenElement());
@@ -239,7 +261,10 @@ public class ThreeAdressesVisitor extends Visitor{
 
   }
 
-
+  /**
+   * This method will add the left assignment element, visit the rest of it and go back to the parent of the left assignment in the tree
+   * @param leftD the left side of an affectation
+   */
   public void VisitLeftDeclaration(LeftDefinition leftD) {
 
     ThreeAdressesManager.getInstance().addElement(new LeftAssignationElement());
@@ -249,6 +274,10 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
+  /**
+   * This method will add the right assignment element, visit the rest of it and go back to the parent of the right assignment in the tree
+   * @param rightD the right side of the affectation
+   */
   public void VisitRightDeclaration(RightDefinition rightD) {
 
     ThreeAdressesManager.getInstance().addElement(new RightAssignationElement());
@@ -258,6 +287,10 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
+  /**
+   * This method will add the list element, visit the rest of it and go back to the parent of the list declaration in the tree
+   * @param listD the list declaration
+   */
   public void VisitListDeclaration(ListDeclaration listD) {
 
     ThreeAdressesManager.getInstance().addElement(new ListElement());
@@ -267,6 +300,10 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
+  /**
+   * This method will add the nil element, visit the rest of it and go back to the parent of the nil declaration in the tree
+   * @param nilD the nil declaration
+   */
   public void VisitNilDeclaration(NilDeclaration nilD) {
 
     ThreeAdressesManager.getInstance().addElement(new NilElement());
@@ -276,35 +313,50 @@ public class ThreeAdressesVisitor extends Visitor{
     ThreeAdressesManager.getInstance().back();
   }
 
-    public void VisitHDDeclaration(HeadDeclaration headD) {
+  /**
+   * This method will add the hd element, visit the rest of it and go back to the parent of the hd declaration in the tree
+   * @param headD the hd declaration
+   */
+  public void VisitHDDeclaration(HeadDeclaration headD) {
 
-        ThreeAdressesManager.getInstance().addElement(new HdElement());
+      ThreeAdressesManager.getInstance().addElement(new HdElement());
 
-        visitTree(headD);
+      visitTree(headD);
 
-        ThreeAdressesManager.getInstance().back();
-    }
+      ThreeAdressesManager.getInstance().back();
+  }
 
-    public void VisitTLDeclaration(TailDeclaration tailD) {
+  /**
+   * This method will add the tl element, visit the rest of it and go back to the parent of the tl declaration in the tree
+   * @param tailD the tl declaration
+   */
+  public void VisitTLDeclaration(TailDeclaration tailD) {
 
-        ThreeAdressesManager.getInstance().addElement(new TlElement());
+      ThreeAdressesManager.getInstance().addElement(new TlElement());
 
-        visitTree(tailD);
+      visitTree(tailD);
 
-        ThreeAdressesManager.getInstance().back();
-    }
+      ThreeAdressesManager.getInstance().back();
+  }
+
+  /**
+   * This method will add a left conditional element, visit the rest of it and go back to the parent of the left conditional declaration in the tree
+   * @param leftD the left side of a conditional element
+   */
+  public void VisitLeftCondDeclaration(LeftCondDeclaration leftD) {
 
 
-    public void VisitLeftCondDeclaration(LeftCondDeclaration leftD) {
+      ThreeAdressesManager.getInstance().addElement(new LeftCondElement());
 
+      visitTree(leftD);
 
-        ThreeAdressesManager.getInstance().addElement(new LeftCondElement());
+      ThreeAdressesManager.getInstance().back();
+  }
 
-        visitTree(leftD);
-
-        ThreeAdressesManager.getInstance().back();
-    }
-
+  /**
+   * This method will add a right conditional element, visit the rest of it and go back to the parent of the right conditional declaration in the tree
+   * @param rightcond the right side of a conditional element
+   */
   public void VisitRightCondDeclaration(RightCondDeclaration rightcond) {
 
         ThreeAdressesManager.getInstance().addElement(new RightCondElement());
@@ -315,6 +367,4 @@ public class ThreeAdressesVisitor extends Visitor{
 
 
   }
-
-
 }

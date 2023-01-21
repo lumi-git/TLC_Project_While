@@ -98,7 +98,10 @@ public class ThreeAdressesManager {
 
     }
 
-
+    /**
+     * This method will return the current element
+     * @return the current element
+     */
     public ThreeAdressElement getCurrentElement() {
         return currentElement;
     }
