@@ -1,5 +1,7 @@
 TLC.CompilerWhile
 TLC.CompilerWhile.AntLRFiles
 TLC.CompilerWhile.ConcreteElements
+TLC.CompilerWhile.ConcreteElementsTest
 TLC.CompilerWhile.Errors
+TLC.CompilerWhile.ErrorsTest
 TLC.CompilerWhile.ThreeAdresseElements
