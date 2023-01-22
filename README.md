@@ -2,6 +2,8 @@
 
 This project is a While to Java compiler.
 
+[Doc compiler](doc/index.html)
+
 ## Description
 
 We are four students creating a compiler for the while language.
