@@ -35,30 +35,30 @@ public class SourceElement extends ThreeAdressElement {
     }
 
     /**
-     * This method will generate the C++ code of the SourceElement
+     * This method will generate the Java code of the SourceElement
      *
-     * @return the C++ code of the SourceElement
+     * @return the Java code of the SourceElement
      **/
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = """
-package TLC.CompilerWhile.CPPOUT;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Arrays;
-public class main {
-    static Deque<node> stack = new ArrayDeque<>();
-    static Map<String,node> map = new HashMap<>();
-                """;
+                package TLC.CompilerWhile.CPPOUT;
+                import java.util.ArrayDeque;
+                import java.util.Deque;
+                import java.util.HashMap;
+                import java.util.Map;
+                import java.util.Arrays;
+                public class main {
+                    static Deque<node> stack = new ArrayDeque<>();
+                    static Map<String,node> map = new HashMap<>();
+                                """;
 
         for (ThreeAdressElement e : children)
-            s += e.toCpp();
+            s += e.toJava();
 
         s += """
-        }
-        """;
+                }
+                """;
         return s;
     }
 

@@ -63,12 +63,12 @@ public class AffecationElement extends ThreeAdressElement {
     }
 
     /**
-     * This method will return the equivalent of an assignation in c++
+     * This method will return the equivalent of an assignation in Java
      *
-     * @return the equivalent of an assignation in c++
+     * @return the equivalent of an assignation in Java
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
 
 
@@ -76,12 +76,12 @@ public class AffecationElement extends ThreeAdressElement {
             for(ThreeAdressElement e : right.children ){
 
                 if (e instanceof FuncCallElement){
-                    s += e.toCpp()+";\n";
+                    s += e.toJava()+";\n";
                 }
             }
             for(ThreeAdressElement e : left.children){
                 if(e instanceof VarElement) {
-                    s += "map.put("+e.toCpp() +","+ "stack.pop());\n";
+                    s += "map.put("+e.toJava() +","+ "stack.pop());\n";
                 }
             }
         }
@@ -90,10 +90,10 @@ public class AffecationElement extends ThreeAdressElement {
             for(int i = 0;i<right.children.size() ;i++){
 
                 if (right.getChildren().get(i) instanceof VarElement){
-                    s+= "map.put("+left.getChildren().get(i).toCpp() + " , "+ ((VarElement)right.getChildren().get(i)).fromMap()+");\n";
+                    s+= "map.put("+left.getChildren().get(i).toJava() + " , "+ ((VarElement)right.getChildren().get(i)).fromMap()+");\n";
                 }
                 else {
-                    s+= "map.put("+left.getChildren().get(i).toCpp() + " , "+ (right.getChildren().get(i)).toCpp()+");\n";
+                    s+= "map.put("+left.getChildren().get(i).toJava() + " , "+ (right.getChildren().get(i)).toJava()+");\n";
                 }
 
             }

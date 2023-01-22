@@ -32,14 +32,14 @@ public class ThenElement extends ThreeAdressElement{
         children.add(e);
     }
     /**
-     * This method will generate the C++ code of the ThenElement
-     * @return the C++ code of the ThenElement
+     * This method will generate the Java code of the ThenElement
+     * @return the Java code of the ThenElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
         for (ThreeAdressElement e : children) {
-            s += e.toCpp();
+            s += e.toJava();
         }
         return s;
     }

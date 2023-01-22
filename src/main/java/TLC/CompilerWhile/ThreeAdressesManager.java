@@ -83,8 +83,8 @@ public class ThreeAdressesManager {
      * This method will build the current element into a C++ string
      * @return the C++ code of the current element
      */
-    public String ToCpp(){
-        return program.toCpp();
+    public String ToJava(){
+        return program.toJava();
     }
 
     /**
@@ -94,7 +94,7 @@ public class ThreeAdressesManager {
         try {
             FileWriter myWriter = new FileWriter("src/main/java/TLC/CompilerWhile/CPPOUT/main.java");
 
-            String programString = ToCpp();
+            String programString = ToJava();
             myWriter.write(programString);
 
             myWriter.close();

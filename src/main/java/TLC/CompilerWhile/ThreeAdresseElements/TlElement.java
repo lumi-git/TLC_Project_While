@@ -30,15 +30,15 @@ public class TlElement extends ThreeAdressElement{
     }
 
     /**
-     * This method will generate the C++ code of the TlElement
-     * @return the C++ code of the TlElement
+     * This method will generate the Java code of the TlElement
+     * @return the Java code of the TlElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
 
         String s = "(";
         for (ThreeAdressElement tae : children) {
-            s += tae.toCpp()+" ";
+            s += tae.toJava()+" ";
         }
         s += ").getTail()";
         return s;

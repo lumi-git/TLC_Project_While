@@ -74,7 +74,7 @@ public class IfnzElement extends ThreeAdressElement {
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         return null;
     }
 

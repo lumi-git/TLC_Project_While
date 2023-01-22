@@ -55,7 +55,7 @@ public class Function extends ThreeAdressElement {
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String params = "";
         String def = "";
         String addons = "";
@@ -68,7 +68,7 @@ public class Function extends ThreeAdressElement {
             //endPrint = "System.out.println(stack.pop().toInt());\n";
         }
         else{
-            params = parameters.toCpp();
+            params = parameters.toJava();
             def = "public static void ";
         }
 
@@ -83,9 +83,9 @@ public class Function extends ThreeAdressElement {
         }
 
         for (ThreeAdressElement e : children)
-            s += e.toCpp();
+            s += e.toJava();
 
-        s+= returnElement.toCpp() +";\n";
+        s+= returnElement.toJava() +";\n";
         s+= endPrint;
         s += "}\n";
         return s;

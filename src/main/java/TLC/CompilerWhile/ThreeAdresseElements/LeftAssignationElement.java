@@ -37,18 +37,18 @@ public class LeftAssignationElement extends ThreeAdressElement {
     }
 
     /**
-     * This method will generate the C++ code of the LeftAssignationElement
-     * @return the C++ code of the LeftAssignationElement
+     * This method will generate the Java code of the LeftAssignationElement
+     * @return the Java code of the LeftAssignationElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
 
         for (ThreeAdressElement e : children) {
             if (children.get(children.size() - 1) != e)
-                s += e.toCpp() + ", ";
+                s += e.toJava() + ", ";
             else
-                s += e.toCpp();
+                s += e.toJava();
         }
         return s;
     }
@@ -57,7 +57,7 @@ public class LeftAssignationElement extends ThreeAdressElement {
         String[] s = new String[children.size()];
         int i = 0;
         for (ThreeAdressElement e : children) {
-            s[i] = e.toCpp();
+            s[i] = e.toJava();
             i++;
         }
         return s;

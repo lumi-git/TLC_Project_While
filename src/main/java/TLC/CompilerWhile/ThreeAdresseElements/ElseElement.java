@@ -31,10 +31,10 @@ public class ElseElement extends ThreeAdressElement{
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
         for (ThreeAdressElement e : children)
-            s += e.toCpp();
+            s += e.toJava();
         return s;
     }
 }

@@ -73,7 +73,7 @@ public class ForElement extends ThreeAdressElement{
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
         String var = "";
 
@@ -81,13 +81,13 @@ public class ForElement extends ThreeAdressElement{
             var = ((VarElement)loop).fromMap();
         }
         else{
-            var = loop.toCpp();
+            var = loop.toJava();
         }
         String loopvar = "i_" + ThreeAdressesManager.getInstance().getUniqLoopID();
         s += "for( int "+loopvar+" =0; "+loopvar+"<" + var + ".toInt();"+loopvar+"++){ \n";
 
         for (ThreeAdressElement e : children)
-            s += e.toCpp();
+            s += e.toJava();
 
         s+= "}\n";
         return s;

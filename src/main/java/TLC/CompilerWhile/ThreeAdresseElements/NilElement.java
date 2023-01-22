@@ -26,11 +26,11 @@ public class NilElement extends ThreeAdressElement{
         children.add(e);
     }
     /**
-     * This method will generate the C++ code of the NilElement
-     * @return the C++ code of the NilElement
+     * This method will generate the Java code of the NilElement
+     * @return the Java code of the NilElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         return "new node()";
     }
 

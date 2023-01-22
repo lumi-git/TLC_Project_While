@@ -72,12 +72,12 @@ public class WhileElement extends ThreeAdressElement{
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = Befor;
-        s += "while(" + Condition.getCondElement().toCpp() + "){\n";
+        s += "while(" + Condition.getCondElement().toJava() + "){\n";
 
         for (ThreeAdressElement e : children)
-            s += e.toCpp();
+            s += e.toJava();
 
         s += "}\n";
         return s;

@@ -31,7 +31,7 @@ public class GotoElement extends ThreeAdressElement{
      * @return nul
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         return null;
     }
 }

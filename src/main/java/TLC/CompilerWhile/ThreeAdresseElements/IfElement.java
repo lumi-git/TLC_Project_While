@@ -75,17 +75,17 @@ public class IfElement extends ThreeAdressElement{
     }
 
     /**
-     * this method is used to convert the ThreeAdressCode to C++
-     * @return the C++ code of the if element
+     * this method is used to convert the ThreeAdressCode to Java
+     * @return the Java code of the if element
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
-        s += "if(" + condition.toCpp() + "){\n";
-        s += Then.toCpp();
+        s += "if(" + condition.toJava() + "){\n";
+        s += Then.toJava();
         s += "}else{\n";
         if(Else != null)
-            s += Else.toCpp();
+            s += Else.toJava();
         s += "}\n";
         return s;
     }

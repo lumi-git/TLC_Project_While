@@ -31,13 +31,13 @@ public class PpElement extends ThreeAdressElement{
     }
 
     /**
-     * This method will generate the C++ code of the ReturnElement
+     * This method will generate the Java code of the ReturnElement
      *
-     * @return the C++ code of the ReturnElement
+     * @return the Java code of the ReturnElement
      */
 
     @Override
-    public String toCpp() {
+    public String toJava() {
 
         ThreeAdressElement e = children.get(0);
 
@@ -49,7 +49,7 @@ public class PpElement extends ThreeAdressElement{
             s+= ((VarElement)e).fromMap() +"+\"\"";
         }
         else{
-            s+= e.toCpp()+"+\"\"";
+            s+= e.toJava()+"+\"\"";
         }
 
 

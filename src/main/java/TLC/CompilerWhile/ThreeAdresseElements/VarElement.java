@@ -23,11 +23,11 @@ public class VarElement extends ThreeAdressElement{
         }
 
         /**
-         * This method will generate the C++ code of the VarElement which is the variable name
-         * @return the C++ code of the VarElement
+         * This method will generate the Java code of the VarElement which is the variable name
+         * @return the Java code of the VarElement
          */
         @Override
-        public String toCpp() {
+        public String toJava() {
                 return "\""+variable+"\"";
         }
 

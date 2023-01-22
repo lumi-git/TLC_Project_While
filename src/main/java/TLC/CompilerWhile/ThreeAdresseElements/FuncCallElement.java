@@ -45,13 +45,13 @@ public class FuncCallElement extends ThreeAdressElement{
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = funcName + "(" ;
 
         for (ThreeAdressElement e : children){
 
             if (e instanceof FuncCallElement){
-                Befor += e.toCpp()+";\n";
+                Befor += e.toJava()+";\n";
                 int count = Stack.getInstance().findSymbol(((FuncCallElement) e).funcName).getReturnCount();
                 for(int i = 0; i <count;i++){
                     if(i <count-1 || children.get(children.size()-1) != e ){
@@ -65,18 +65,18 @@ public class FuncCallElement extends ThreeAdressElement{
             }
             else if (children.get(children.size()-1) == e){
                 if (e instanceof VarElement){
-                    s += "map.get("+e.toCpp()+")";
+                    s += "map.get("+e.toJava()+")";
                 }
                 else{
-                    s += e.toCpp();
+                    s += e.toJava();
                 }
             }
             else{
                 if (e instanceof VarElement){
-                    s += "map.get("+e.toCpp()+") , ";
+                    s += "map.get("+e.toJava()+") , ";
                 }
                 else{
-                    s += e.toCpp()+" , ";
+                    s += e.toJava()+" , ";
                 }
             }
         }

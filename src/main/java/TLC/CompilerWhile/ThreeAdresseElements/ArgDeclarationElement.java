@@ -36,12 +36,12 @@ public class ArgDeclarationElement extends ThreeAdressElement {
     }
 
     /**
-     * This method will return the equivalent of an assignation in c++
+     * This method will return the equivalent of an assignation in Java
      *
-     * @return the equivalent of an assignation in c++
+     * @return the equivalent of an assignation in Java
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
         for (ThreeAdressElement e : children){
             if (children.get(children.size() - 1) == e)

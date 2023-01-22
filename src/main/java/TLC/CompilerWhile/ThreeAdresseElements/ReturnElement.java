@@ -35,18 +35,18 @@ public class ReturnElement extends ThreeAdressElement {
     }
 
     /**
-     * This method will generate the C++ code of the ReturnElement
+     * This method will generate the Java code of the ReturnElement
      *
-     * @return the C++ code of the ReturnElement
+     * @return the Java code of the ReturnElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
         for (ThreeAdressElement e : children) {
             if (children.get(children.size() - 1) == e) {
-                s += "stack.push(" + " map.get( "+e.toCpp() + " ))";
+                s += "stack.push(" + " map.get( "+e.toJava() + " ))";
             } else {
-                s += "stack.push(" + " map.get(  "+e.toCpp() + " ));";
+                s += "stack.push(" + " map.get(  "+e.toJava() + " ));";
             }
 
         }

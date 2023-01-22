@@ -49,27 +49,27 @@ public class CondElement extends ThreeAdressElement {
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
 
         if (rightCondElement.getChildren().size() > 0) {
-            s += "map.get("+ leftCondElement.toCpp() + ")";
+            s += "map.get("+ leftCondElement.toJava() + ")";
             s += ".equals(";
-            s += rightCondElement.toCpp();
+            s += rightCondElement.toJava();
             s += ")";
         } else {
             if (leftCondElement.getChildren().get(0) instanceof VarElement){
-                s += "map.get("+ leftCondElement.toCpp() + ").isNotEmpty()";
+                s += "map.get("+ leftCondElement.toJava() + ").isNotEmpty()";
             }
             else if (parent instanceof WhileElement && leftCondElement.getChildren().get(0) instanceof FuncCallElement){
 
                 parent.addElement(leftCondElement.getChildren().get(0));
-                parent.setBefor(leftCondElement.toCpp());
+                parent.setBefor(leftCondElement.toJava());
 
                 s += "stack.pop()";
             }
             else{
-                s+= leftCondElement.toCpp();
+                s+= leftCondElement.toJava();
             }
 
 

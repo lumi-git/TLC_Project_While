@@ -69,10 +69,10 @@ public abstract class ThreeAdressElement {
     public abstract void addElement(ThreeAdressElement e);
 
     /**
-     * This abstract method should generate the C++ code of the current ThreeAdressElement
-     * @return the C++ code of the current ThreeAdressElement
+     * This abstract method should generate the Java code of the current ThreeAdressElement
+     * @return the Java code of the current ThreeAdressElement
      */
-    public abstract String toCpp();
+    public abstract String toJava();
 
 
 }

@@ -30,11 +30,11 @@ public class ListElement extends ThreeAdressElement{
     }
 
     /**
-     * This method will generate the C++ code of the ListElement
-     * @return the C++ code of the ListElement
+     * This method will generate the Java code of the ListElement
+     * @return the Java code of the ListElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
 
         String s = "node.newFromList(Arrays.asList(";
 
@@ -44,14 +44,14 @@ public class ListElement extends ThreeAdressElement{
                     s+= ((VarElement) e).fromMap();
                 }
                 else{
-                    s+= e.toCpp();
+                    s+= e.toJava();
                 }
             }
             else {
                 if (e instanceof VarElement) {
                     s += ((VarElement) e).fromMap() + ",";
                 } else {
-                    s += e.toCpp() + ", ";
+                    s += e.toJava() + ", ";
                 }
             }
         }

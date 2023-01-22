@@ -40,18 +40,18 @@ public class RightAssignationElement extends ThreeAdressElement{
 
     }
     /**
-     * This method will generate the C++ code of the RightAssignationElement
-     * @return the C++ code of the RightAssignationElement
+     * This method will generate the Java code of the RightAssignationElement
+     * @return the Java code of the RightAssignationElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "";
 
         for (ThreeAdressElement e : children) {
             if (children.get(children.size() - 1) != e)
-                s += "new node(" + e.toCpp() + "), ";
+                s += "new node(" + e.toJava() + "), ";
             else
-                s += "new node(" + e.toCpp() + ")";
+                s += "new node(" + e.toJava() + ")";
         }
         return s;
     }
@@ -60,7 +60,7 @@ public class RightAssignationElement extends ThreeAdressElement{
         String[] s = new String[children.size()];
         int i = 0;
         for (ThreeAdressElement e : children) {
-            s[i] = e.toCpp();
+            s[i] = e.toJava();
             i++;
         }
         return s;

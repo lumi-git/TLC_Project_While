@@ -32,14 +32,14 @@ public class HdElement extends ThreeAdressElement{
     }
 
     /**
-     * This method will generate the C++ code of the HdElement
-     * @return the C++ code of the HdElement
+     * This method will generate the Java code of the HdElement
+     * @return the Java code of the HdElement
      */
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s = "node.getRight( ";
         for (ThreeAdressElement tae : this.getChildren()) {
-            s += tae.toCpp()+" ";
+            s += tae.toJava()+" ";
         }
         s += ").getHead()";
 

@@ -23,11 +23,11 @@ public class RightCondElement extends ThreeAdressElement{
     }
 
     @Override
-    public String toCpp() {
+    public String toJava() {
         String s ="" ;
 
         for (ThreeAdressElement tae : this.getChildren()) {
-            s += tae.toCpp() + " ";
+            s += tae.toJava() + " ";
         }
 
         return s;
