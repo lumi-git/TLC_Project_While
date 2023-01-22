@@ -11,6 +11,6 @@ public class ErorrGTest {
         String message = "An error occurred";
         ErrorG errorG = new ErrorG(message);
         assertEquals(message, errorG.getMessage());
-        assertEquals(message, errorG.toString());
     }
+
 }

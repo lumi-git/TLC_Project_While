@@ -10,7 +10,17 @@ public class WhileErrorTest {
     public void testWhileError() {
         WhileError error = new WhileError("Invalid syntax", 5, 2);
         assertEquals("Compile Error -> Error at line 4 column 2 : Invalid syntax", error.toString());
+    }
+
+    @Test
+    public void testWhileErrorLine() {
+        WhileError error = new WhileError("Invalid syntax", 5, 2);
         assertEquals(4, error.getLine());
+    }
+
+    @Test
+    public void testWhileErrorColumn() {
+        WhileError error = new WhileError("Invalid syntax", 5, 2);
         assertEquals(2, error.getColumn());
     }
 }

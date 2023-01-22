@@ -11,4 +11,11 @@ public class StackOverflowErrorTest {
         assertEquals("Stack Overflow : maximum stack depth reached", error.toString());
         assertEquals("maximum stack depth reached", error.getMessage());
     }
+
+    @Test
+    public void testStackOverflowErrorMessage() {
+        StackOverflowError error = new StackOverflowError("maximum stack depth reached");
+        assertEquals("maximum stack depth reached", error.getMessage());
+    }
+
 }
