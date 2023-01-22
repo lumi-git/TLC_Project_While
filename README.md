@@ -21,7 +21,7 @@ git clone https://github.com/lumi-git/TLC_Project_While.git
 
 ### Executing program
 
-To write a while programm, you need to create a name.while file in example and write your programm following the while rules. 
+To write a while programm, you need to create a name.while file in the folder example and write your programm following the while rules. 
 You need to change String fileName in the App class (TLC_Project_While/src/main/java/TLC/CompilerWhile/App.java) and put your file name to run the correct programm.
 
 To build your while programm, there is two step.
