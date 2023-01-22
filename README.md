@@ -7,6 +7,12 @@ This project is a While to Java compiler.
 ## Description
 
 We are four students creating a compiler for the while language.
+
+Melvin
+Enzo
+Yann
+Ronan
+
 you can find the documentation of the language [here](Specifications_while.pdf)
 
 ## Getting Started
