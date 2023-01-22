@@ -11,7 +11,7 @@ function main :
 read
 %
     Result,Test := nil,nil;
-    Ret1,Ret2 := (foo Result Test);
+    Ret1,Ret2 := (foo Result Test)
 
 %
 write Result

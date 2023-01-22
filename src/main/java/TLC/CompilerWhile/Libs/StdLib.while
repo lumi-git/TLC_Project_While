@@ -4,7 +4,7 @@ read Arg1
     if Arg1 then
         Result := nil
     else
-        Result := cons( nil nil )
+        Result := (cons nil nil )
     fi
 %
 write Result

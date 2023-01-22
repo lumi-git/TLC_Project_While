@@ -16,7 +16,7 @@ public class DeclarationErrorTest {
     @Test
     public void testDeclarationErrorLine(){
         DeclarationError error = new DeclarationError("x", 5, 6);
-        assertEquals(5, error.getLine());
+        assertEquals(5, error.getLine()-1);
     }
 
     @Test

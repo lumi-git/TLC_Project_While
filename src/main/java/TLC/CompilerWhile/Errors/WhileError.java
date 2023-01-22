@@ -20,7 +20,7 @@ public class WhileError extends ErrorG {
    * @return the line where the error was found
    */
   public int getLine() {
-    return m_line - OFFSET;
+    return m_line - OFFSET+1;
   }
   /**
    * This method will return the place in the line where the error was found

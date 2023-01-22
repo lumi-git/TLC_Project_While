@@ -21,7 +21,7 @@ public class UnexistingSymbolErrorTest {
     @Test
     public void testUnexistingSymbolErrorLine() {
         UnexistingSymbolError error = new UnexistingSymbolError("x", 10, 2);
-        assertEquals(10, error.getLine());
+        assertEquals(10, error.getLine()-1);
     }
 
     @Test

@@ -30,7 +30,7 @@ public class App {
       //recovering the files we will work on
       String WorkspacePath = "src/main/java/TLC/CompilerWhile/examples/";
 
-      String fileName = "programm1.while";
+      String fileName = "programmSimple.while";
 
       //the std lib, containing the classical function of our language
       String LibPath = "src/main/java/TLC/CompilerWhile/Libs/";
@@ -39,9 +39,9 @@ public class App {
 
       String text = "";
 
-      text = readFileAsString(LibPath + StdLib);
+      text += readFileAsString(LibPath + StdLib);
 
-      text.replace(" ","");
+
 
       //offset due to the adding of the lib at the top of the code
       int libOffset = text.lines().toList().size();
@@ -50,9 +50,10 @@ public class App {
 
       text += readFileAsString(WorkspacePath + fileName);
 
+      print(text);
+
       //creating a stream of char représentative of the source code
       CharStream stream = new ANTLRStringStream(text);
-
 
         //creating a lexer with the stream of char
       WhileLexer lexer = new WhileLexer(stream);
@@ -71,7 +72,7 @@ public class App {
         CommonTree ct = (CommonTree) parser.start().getTree();
 
 
-        //System.out.println(ct.toStringTree());
+        System.out.println(ct.toStringTree());
 
         //creating a visitor to create the simbole table with the common tree
         SymbolTableVisitor symbolTableVisitor = new SymbolTableVisitor(ct);
@@ -84,14 +85,12 @@ public class App {
 
         symbolTableVisitor.parse();
 
-        //printerVisitor.parse();
-
         //this prints the stack in a md file located in the GeneratedDiagrams folder of the project
         Stack.getInstance().PrintStackAsMD();
 
         threeAdressesVisitor.parse();
 
-        //System.out.println(ThreeAdressesManager.getInstance().Build());
+        System.out.println(ThreeAdressesManager.getInstance().Build());
 
         ThreeAdressesManager.getInstance().printToFileCPP();
 

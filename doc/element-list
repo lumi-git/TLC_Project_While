@@ -4,4 +4,5 @@ TLC.CompilerWhile.ConcreteElements
 TLC.CompilerWhile.ConcreteElementsTest
 TLC.CompilerWhile.Errors
 TLC.CompilerWhile.ErrorsTest
+TLC.CompilerWhile.JAVAOUT
 TLC.CompilerWhile.ThreeAdresseElements

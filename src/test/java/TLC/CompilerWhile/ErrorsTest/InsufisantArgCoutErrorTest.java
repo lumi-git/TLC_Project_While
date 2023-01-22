@@ -20,7 +20,7 @@ public class InsufisantArgCoutErrorTest {
     public void testInsufisantArgCountErrorLine(){
 
         InsufisantArgCountError error = new InsufisantArgCountError("testFunc", 2, 2);
-        assertEquals(2, error.getLine());
+        assertEquals(2, error.getLine()-1);
     }
 
     @Test

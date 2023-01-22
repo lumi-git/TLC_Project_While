@@ -15,7 +15,7 @@ public class WhileErrorTest {
     @Test
     public void testWhileErrorLine() {
         WhileError error = new WhileError("Invalid syntax", 5, 2);
-        assertEquals(5, error.getLine());
+        assertEquals(5, error.getLine()-1);
     }
 
     @Test

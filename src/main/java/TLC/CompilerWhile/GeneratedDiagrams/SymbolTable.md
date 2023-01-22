@@ -9,9 +9,9 @@ class ID0_START_0{
 
    ->   stdlibtestADD , tree , func , 2 , 1 , UniqueID: 3
 
-   ->   addArbres , tree , func , 2 , 1 , UniqueID: 7
+   ->   foo , tree , func , 2 , 2 , UniqueID: 7
 
-   ->   main , tree , func , 0 , 1 , UniqueID: 11
+   ->   main , tree , func , 0 , 1 , UniqueID: 13
 
 }
 
@@ -40,15 +40,19 @@ class ID2_FUNC_1{
 }
 
 class ID3_FUNC_2{
-   Name : addArbres
+   Name : foo
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   A1 , tree , var , 0 , 1 , UniqueID: 8
+   ->   X , tree , var , 0 , 1 , UniqueID: 8
 
-   ->   A2 , tree , var , 0 , 1 , UniqueID: 9
+   ->   Y , tree , var , 0 , 1 , UniqueID: 9
 
-   ->   Ret1 , tree , var , 0 , 1 , UniqueID: 10
+   ->   Result , tree , var , 0 , 1 , UniqueID: 10
+
+   ->   Res1 , tree , var , 0 , 1 , UniqueID: 11
+
+   ->   Res2 , tree , var , 0 , 1 , UniqueID: 12
 
 }
 
@@ -57,11 +61,13 @@ class ID4_FUNC_3{
    -------------------------
    | name | kind | type |
    --------------------------
-   ->   C , tree , var , 0 , 1 , UniqueID: 12
+   ->   Result , tree , var , 0 , 1 , UniqueID: 14
 
-   ->   Test , tree , var , 0 , 1 , UniqueID: 13
+   ->   Test , tree , var , 0 , 1 , UniqueID: 15
 
-   ->   Ret1 , tree , var , 0 , 1 , UniqueID: 14
+   ->   Ret1 , tree , var , 0 , 1 , UniqueID: 16
+
+   ->   Ret2 , tree , var , 0 , 1 , UniqueID: 17
 
 }
 

@@ -15,6 +15,7 @@ All dependencies are managed via a Maven project.
 
 ### Installing
 To get started use the following command:
+
 ```
 git clone https://github.com/lumi-git/TLC_Project_While.git
 ```

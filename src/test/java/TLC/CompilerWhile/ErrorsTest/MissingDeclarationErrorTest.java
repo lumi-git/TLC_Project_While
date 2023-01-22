@@ -24,7 +24,7 @@ public class MissingDeclarationErrorTest {
         int line = 10;
         int column = 5;
         MissingDeclarationError error = new MissingDeclarationError(name, line, column);
-        assertEquals(line, error.getLine());
+        assertEquals(line, error.getLine()-1);
     }
 
     @Test
