@@ -13,7 +13,6 @@ public class SourceElement extends ThreeAdressElement {
 
     /**
      * This method will Build the ThreeAdress code based on the children build method
-     *
      * @return the ThreeAdressCode of the SourceElement
      **/
     @Override
@@ -26,7 +25,6 @@ public class SourceElement extends ThreeAdressElement {
 
     /**
      * This method will add a child in the list of children which will be build later
-     *
      * @param e the threeAdressElement to add
      **/
     @Override
@@ -36,13 +34,12 @@ public class SourceElement extends ThreeAdressElement {
 
     /**
      * This method will generate the Java code of the SourceElement
-     *
      * @return the Java code of the SourceElement
      **/
     @Override
     public String toJava() {
         String s = """
-                package TLC.CompilerWhile.CPPOUT;
+                package TLC.CompilerWhile.JAVAOUT;
                 import java.util.ArrayDeque;
                 import java.util.Deque;
                 import java.util.HashMap;

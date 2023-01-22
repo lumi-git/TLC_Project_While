@@ -55,15 +55,4 @@ public class RightAssignationElement extends ThreeAdressElement{
         }
         return s;
     }
-
-    public String[] toCppArray() {
-        String[] s = new String[children.size()];
-        int i = 0;
-        for (ThreeAdressElement e : children) {
-            s[i] = e.toJava();
-            i++;
-        }
-        return s;
-    }
-
 }

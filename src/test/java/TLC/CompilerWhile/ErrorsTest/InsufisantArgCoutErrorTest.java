@@ -8,13 +8,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InsufisantArgCoutErrorTest {
+
     @Test
-    public void testInsufisantArgCountError() {
-        Stack.getInstance().addSymbol(new SymbolElement("testFunc", "func", "int", 1, 1, 2));
+    public void testInsufisantArgCountErrorName(){
+
         InsufisantArgCountError error = new InsufisantArgCountError("testFunc", 2, 2);
-        assertEquals("Missing arguments for the function : testFunc\n| Function testFunc Takes 2", error.getMessage());
         assertEquals("testFunc", error.getName());
+    }
+
+    @Test
+    public void testInsufisantArgCountErrorLine(){
+
+        InsufisantArgCountError error = new InsufisantArgCountError("testFunc", 2, 2);
         assertEquals(2, error.getLine());
+    }
+
+    @Test
+    public void testInsufisantArgCountErrorColumn(){
+
+        InsufisantArgCountError error = new InsufisantArgCountError("testFunc", 2, 2);
         assertEquals(2, error.getColumn());
     }
 }

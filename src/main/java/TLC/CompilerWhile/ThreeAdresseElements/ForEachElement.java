@@ -32,10 +32,10 @@ public class ForEachElement extends ThreeAdressElement {
     }
 
     /**
-     * This method will Build the ThreeAdress code based on the forEachLabel with a unique id and
+     * This method will Build the ThreeAdresseCode based on the forEachLabel with a unique id and
      * the children and condition build method
      *
-     * @return the ThreeAdressCode of the for each element
+     * @return the ThreeAdresseCode of the for each element
      **/
     @Override
     public String Build() {
@@ -83,9 +83,12 @@ public class ForEachElement extends ThreeAdressElement {
 
 
     }
-
+    /**
+     * This method will return a string because we didn't manage to finish it, do a for instead :)
+     * @return a string "for each"
+     */
     @Override
     public String toJava() {
-        return null;
+        return "for each but it doesn't been implemented yet";
     }
 }

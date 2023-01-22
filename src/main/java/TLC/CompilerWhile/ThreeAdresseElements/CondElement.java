@@ -47,7 +47,11 @@ public class CondElement extends ThreeAdressElement {
             rightCondElement = (RightCondElement) e;
 
     }
-
+    /**
+     * This method will return the equivalent of a conditional element in Java
+     *
+     * @return the equivalent of a conditional element in Java
+     */
     @Override
     public String toJava() {
         String s = "";

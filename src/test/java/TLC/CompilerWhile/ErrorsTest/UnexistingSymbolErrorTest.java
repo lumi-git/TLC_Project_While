@@ -10,8 +10,23 @@ public class UnexistingSymbolErrorTest {
     public void testUnexistingSymbolError() {
         UnexistingSymbolError error = new UnexistingSymbolError("x", 10, 2);
         assertEquals("Unknown symbol : x\nDid you forget to declare it ?", error.getMessage());
+    }
+
+    @Test
+    public void testUnexistingSymbolErrorName() {
+        UnexistingSymbolError error = new UnexistingSymbolError("x", 10, 2);
         assertEquals("x", error.getName());
+    }
+
+    @Test
+    public void testUnexistingSymbolErrorLine() {
+        UnexistingSymbolError error = new UnexistingSymbolError("x", 10, 2);
         assertEquals(10, error.getLine());
+    }
+
+    @Test
+    public void testUnexistingSymbolErrorColum() {
+        UnexistingSymbolError error = new UnexistingSymbolError("x", 10, 2);
         assertEquals(2, error.getColumn());
     }
 }

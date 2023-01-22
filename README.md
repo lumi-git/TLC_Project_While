@@ -21,22 +21,21 @@ git clone https://github.com/lumi-git/TLC_Project_While.git
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
 
-## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+To build your while programm, there is two step.
+
+1) You will need to execute the App.java class . This will generate a main.java containing your programm. you will 
+find it in the JAVAOUT folder .
+
+2) Then you will need to run this main.java . The while output will print in the console. 
+
+
+
 
 ## Authors
 
-Ronan Tremoureux
-Melvin Mathurin
-Enzo Voisin
-Yann Paillard
+* Ronan Tremoureux
+* Melvin Mathurin
+* Enzo Voisin
+* Yann Paillard

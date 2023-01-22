@@ -43,7 +43,10 @@ public class FuncCallElement extends ThreeAdressElement{
         children.add(e);
 
     }
-
+    /**
+     * This method will return the equivalent of a call to a function in Java
+     * @return the equivalent of a call to a function in Java
+     */
     @Override
     public String toJava() {
         String s = funcName + "(" ;

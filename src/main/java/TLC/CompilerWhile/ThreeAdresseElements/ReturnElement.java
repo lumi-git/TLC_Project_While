@@ -36,7 +36,6 @@ public class ReturnElement extends ThreeAdressElement {
 
     /**
      * This method will generate the Java code of the ReturnElement
-     *
      * @return the Java code of the ReturnElement
      */
     @Override

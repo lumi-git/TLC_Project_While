@@ -29,7 +29,10 @@ public class ElseElement extends ThreeAdressElement{
     public void addElement(ThreeAdressElement e) {
         children.add(e);
     }
-
+    /**
+     * This method will return the equivalent of an else in Java
+     * @return the equivalent of an else in Java
+     */
     @Override
     public String toJava() {
         String s = "";

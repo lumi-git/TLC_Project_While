@@ -75,7 +75,7 @@ public class IfElement extends ThreeAdressElement{
     }
 
     /**
-     * this method is used to convert the ThreeAdressCode to Java
+     * this method is used to convert the ThreeAdresseCode to Java
      * @return the Java code of the if element
      */
     @Override
@@ -88,6 +88,14 @@ public class IfElement extends ThreeAdressElement{
             s += Else.toJava();
         s += "}\n";
         return s;
+    }
+
+    /**
+     * This method is used to get the unique id of the if element
+     * @return the unique id of the if element
+     */
+    public String getUniqID(){
+        return uniquID+"";
     }
 
 

@@ -1,14 +1,13 @@
 function not:
 read Arg1
 %
-    if Arg1 =? Arg1 then
-        Result := Arg1
-    else
+    if Arg1 then
         Result := nil
+    else
+        Result := cons( nil nil )
     fi
 %
 write Result
-
 
 function stdlibtestADD:
 read Arg1,Arg2

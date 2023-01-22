@@ -92,19 +92,15 @@ public class ThreeAdressesManager {
      */
     public void printToFileCPP(){
         try {
-            FileWriter myWriter = new FileWriter("src/main/java/TLC/CompilerWhile/CPPOUT/main.java");
-
+            FileWriter myWriter = new FileWriter("src/main/java/TLC/CompilerWhile/JAVAOUT/main.java");
             String programString = ToJava();
             myWriter.write(programString);
-
             myWriter.close();
             System.out.println("Succesfully generated diagram of the symbol table at src/main/java/TLC/CompilerWhile/GeneratedDiagrams/SymbolTable.md");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
-
     }
 
     /**

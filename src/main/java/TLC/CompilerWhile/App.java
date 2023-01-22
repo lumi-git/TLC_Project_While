@@ -41,6 +41,8 @@ public class App {
 
       text = readFileAsString(LibPath + StdLib);
 
+      text.replace(" ","");
+
       //offset due to the adding of the lib at the top of the code
       int libOffset = text.lines().toList().size();
       WhileError.OFFSET = libOffset;
@@ -69,7 +71,7 @@ public class App {
         CommonTree ct = (CommonTree) parser.start().getTree();
 
 
-        System.out.println(ct.toStringTree());
+        //System.out.println(ct.toStringTree());
 
         //creating a visitor to create the simbole table with the common tree
         SymbolTableVisitor symbolTableVisitor = new SymbolTableVisitor(ct);
@@ -89,7 +91,7 @@ public class App {
 
         threeAdressesVisitor.parse();
 
-        System.out.println(ThreeAdressesManager.getInstance().Build());
+        //System.out.println(ThreeAdressesManager.getInstance().Build());
 
         ThreeAdressesManager.getInstance().printToFileCPP();
 

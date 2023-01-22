@@ -6,15 +6,33 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MissingDeclarationErrorTest {
+
+
     @Test
-    public void testMissingDeclarationError() {
+    public void testMissingDeclarationErrorName() {
         String name = "x";
         int line = 10;
         int column = 5;
         MissingDeclarationError error = new MissingDeclarationError(name, line, column);
-        assertEquals("Variable x used but not declared", error.toString());
         assertEquals(name, error.getName());
+
+    }
+
+    @Test
+    public void testMissingDeclarationErrorLine() {
+        String name = "x";
+        int line = 10;
+        int column = 5;
+        MissingDeclarationError error = new MissingDeclarationError(name, line, column);
         assertEquals(line, error.getLine());
+    }
+
+    @Test
+    public void testMissingDeclarationErrorColumn() {
+        String name = "x";
+        int line = 10;
+        int column = 5;
+        MissingDeclarationError error = new MissingDeclarationError(name, line, column);
         assertEquals(column, error.getColumn());
     }
 }

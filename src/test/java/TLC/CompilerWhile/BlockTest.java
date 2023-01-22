@@ -23,6 +23,12 @@ public class BlockTest {
     }
 
     @Test
+    public void testGetFalseName() {
+        Block blockFalse = new Block("blockfalse", "", null);
+        assertFalse("block" == blockFalse.getName());
+    }
+
+    @Test
     public void testGetTab() {
         Block block = new Block("block", "", null);
         assertEquals(0, block.getTab().size());
@@ -32,7 +38,7 @@ public class BlockTest {
     @Test
     public void testFindSymbol() {
         Block block = new Block("block", "", null);
-        SymbolElement symbol = new SymbolElement("x", "var", "int",0,0,0);
+        SymbolElement symbol = new SymbolElement("x", "var", "int",0,0,0,1);
         block.getTab().add(symbol);
         assertEquals(symbol, block.findSymbol("x"));
 
@@ -41,13 +47,33 @@ public class BlockTest {
     }
 
     @Test
+    public void testFindSymbolNull() {
+        Block block = new Block("block", "", null);
+        SymbolElement symbol = new SymbolElement("x", "var", "int",0,0,0,1);
+        block.getTab().add(symbol);
+        SymbolElement symbolNotExist = block.findSymbol("y");
+        assertNull(symbolNotExist);
+    }
+
+    @Test
     public void testFindSymbolInParent() {
         Block parent = new Block("parent", "", null);
-        SymbolElement symbol = new SymbolElement("x", "var", "int",0,0,0);
+        SymbolElement symbol = new SymbolElement("x", "var", "int",0,0,0,1);
         parent.getTab().add(symbol);
         Block child = new Block("child", "", parent);
         assertEquals(symbol, child.findSymbolInParent("x"));
 
+        Block grandChild = new Block("grandChild", "", child);
+        SymbolElement symbolNotExist = grandChild.findSymbolInParent("y");
+        assertNull(symbolNotExist);
+    }
+
+    @Test
+    public void testFindSymbolInParentNull() {
+        Block parent = new Block("parent", "", null);
+        SymbolElement symbol = new SymbolElement("x", "var", "int",0,0,0,1);
+        parent.getTab().add(symbol);
+        Block child = new Block("child", "", parent);
         Block grandChild = new Block("grandChild", "", child);
         SymbolElement symbolNotExist = grandChild.findSymbolInParent("y");
         assertNull(symbolNotExist);

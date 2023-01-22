@@ -21,17 +21,20 @@ public class GotoElement extends ThreeAdressElement{
         return "goto " + label + "\n";
     }
 
-
+    /**
+     * The method adds a child in the list of children which will be build later
+     * @param e the ThreeAdressElement to add
+     */
     @Override
     public void addElement(ThreeAdressElement e) {
     }
 
     /**
-     * c'est nul
-     * @return nul
+     * This method return a string goto because we don't need to build a goto in Java
+     * @return "goto"
      */
     @Override
     public String toJava() {
-        return null;
+        return "";
     }
 }

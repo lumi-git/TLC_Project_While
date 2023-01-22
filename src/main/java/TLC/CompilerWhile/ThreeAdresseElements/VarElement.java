@@ -31,16 +31,29 @@ public class VarElement extends ThreeAdressElement{
                 return "\""+variable+"\"";
         }
 
+        /**
+         * This method will return the name of the variable without the quotes
+         * @return the name of the variable
+         */
         public String raw(){
                 return variable;
         }
 
+        /**
+         * This method permits from map to recover the value of a variable from the java map of the compiled program
+         * @return the value of the variable from the java map of the compiled program
+         */
         public String fromMap(){
 
                 return "map.get("+"\""+variable+"\""+")";
 
         }
 
+        /**
+         * This methode permits to add the variable to the map of the compiled program
+         * @param var2 the variable to add
+         * @return The variable with a node to add it to the map
+         */
         public String toMap(VarElement var2){
                 return "map.put("+"\""+variable+"\""+","+var2.raw()+")";
         }

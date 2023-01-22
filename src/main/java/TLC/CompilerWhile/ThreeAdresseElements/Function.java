@@ -54,6 +54,10 @@ public class Function extends ThreeAdressElement {
             children.add(e);
     }
 
+    /**
+     * This method will return the equivalent of a function in Java
+     * @return the equivalent of a function in Java
+     */
     @Override
     public String toJava() {
         String params = "";

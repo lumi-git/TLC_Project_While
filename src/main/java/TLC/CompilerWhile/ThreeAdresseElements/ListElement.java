@@ -56,7 +56,6 @@ public class ListElement extends ThreeAdressElement{
             }
         }
         s+= "))";
-
         return s;
     }
 

@@ -1,5 +1,8 @@
 package TLC.CompilerWhile.ThreeAdresseElements;
-
+/**
+ * This class is extending the ThreeAdressElement class, which is used to create ThreeAdressCode
+ * Based on the AST and the following method, it will generate the ThreeAdressCode of a PpElement (Printer)
+ */
 public class PpElement extends ThreeAdressElement{
     public PpElement() {
         super();
@@ -7,8 +10,7 @@ public class PpElement extends ThreeAdressElement{
 
     /**
      * This method will Build the ThreeAdress code based on the children build method
-     *
-     * @return the ThreeAdressCode of the ReturnElement
+     * @return the ThreeAdressCode of the PpElement
      */
     @Override
     public String Build() {
@@ -31,17 +33,14 @@ public class PpElement extends ThreeAdressElement{
     }
 
     /**
-     * This method will generate the Java code of the ReturnElement
-     *
-     * @return the Java code of the ReturnElement
+     * This method will generate the Java code of the PpElement
+     * @return the Java code of the PpElement
      */
 
     @Override
     public String toJava() {
 
         ThreeAdressElement e = children.get(0);
-
-
 
         String s = "Logger.log(";
 

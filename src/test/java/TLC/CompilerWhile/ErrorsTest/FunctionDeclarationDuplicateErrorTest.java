@@ -15,6 +15,7 @@ public class FunctionDeclarationDuplicateErrorTest {
     @Test
     public void testToString() {
         FunctionDeclarationDuplicateError error = new FunctionDeclarationDuplicateError("test", 10, 20, 5, 10);
-        assertEquals("Duplicate function test\n| Other declaration here at line 5 column 10", error.toString());
+        assertEquals("Compile Error -> Error at line 10 column 20 : Duplicate function test\n" +
+                "| Other declaration here at line 5 column 10", error.toString());
     }
 }
